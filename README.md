@@ -14,7 +14,7 @@ A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), b
 
 - 集成树莓派GPIO控制，支持[Sense HAT](https://www.raspberrypi.org/products/sense-hat/)，未来支持更多树莓派外设和功能。Build in GPIO control and [Sense HAT]([https://www.raspberrypi.org/products/sense-hat/) support, and more functions in the future.
 
-- 程序可直接在应用内运行，同时可转化成Python代码，方便学习Python。
+- 程序可直接在应用内运行，同时可转化成Python代码，方便学习Python。Code runs in the app, and can be convert to Python. Helpful to learn Python.
 
 - 支持繁简体中文、英语。Localization for English, Simplified/Traditional Chinese.
 
