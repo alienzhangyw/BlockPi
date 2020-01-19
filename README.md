@@ -103,7 +103,7 @@ sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools
 
 4. 有使用说明或者教程吗？Any tutorials?
    
-   以后会在项目[Wiki](https://github.com/alienzhangyw/BlockPi/wiki)页面更新一些教程和案例。I will update some tutorials on the [Wiki](https://github.com/alienzhangyw/BlockPi/wiki) page.
+   A：以后会在项目[Wiki](https://github.com/alienzhangyw/BlockPi/wiki)页面更新一些教程和案例。I will update some tutorials on the [Wiki](https://github.com/alienzhangyw/BlockPi/wiki) page.
 
 ## 另外
 
