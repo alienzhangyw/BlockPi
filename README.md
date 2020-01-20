@@ -12,7 +12,7 @@ A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), b
 
 - 完整的Blockly移植到树莓派上，完全免费使用。Full Blockly features on RPi, free to use.
 
-- 集成树莓派GPIO控制，支持[Sense HAT](https://www.raspberrypi.org/products/sense-hat/)，未来支持更多树莓派外设和功能。Build in GPIO control and [Sense HAT]([https://www.raspberrypi.org/products/sense-hat/) support, and more functions in the future.
+- 集成树莓派GPIO控制，支持[Sense HAT](https://www.raspberrypi.org/products/sense-hat/)，未来支持更多树莓派外设和功能。Build-in GPIO control and [Sense HAT]([https://www.raspberrypi.org/products/sense-hat/) support, and more functions in the future.
 
 - 程序可直接在应用内运行，同时可转化成Python代码，方便学习Python。Code runs in the app, and can be convert to Python. Helpful to learn Python.
 
@@ -91,7 +91,7 @@ sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools
 
 1. 软件收费吗？Is this app free？
    
-   A：不，完全免费。Yes, it's tatally free!
+   A：不，完全免费。Yes, it's totally free!
 
 2. deb和AppImage有什么区别？Is there any difference between deb and AppImage?
    
