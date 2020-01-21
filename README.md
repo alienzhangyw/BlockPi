@@ -4,7 +4,7 @@
 
 A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), built on [Google Blockly](https://developers.google.com/blockly/), made for RPi users or kids to learn coding.
 
-![](https://raw.githubusercontent.com/alienzhangyw/BlockPi/master/2020/01/19-12-59-09-%E6%89%B9%E6%B3%A8%202020-01-19%20125727.png)
+![](https://raw.githubusercontent.com/alienzhangyw/BlockPi/master/2020/01/README.png)
 
 出于某些原因，我暂时不会把源代码发布。For some reasons, I will not release the source code temporarily.
 
