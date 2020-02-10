@@ -41,7 +41,7 @@ If not, please make sure your Linux-based RPi system have Nodejs v12+ and Python
 - 或者使用用终端命令：Or you can use command in shell:
 
 ```shell
-sudo dpkg -i blockpi_1.0.1_armv7l.deb
+sudo dpkg -i blockpi_1.0.2_armv7l.deb
 ```
 
 注意自己的文件名。Pay attention to your file name.
@@ -89,21 +89,22 @@ sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools
 
 ## FAQ
 
-1. 软件收费吗？Is this app free？
+1. Q：软件收费吗？Is this app free？
    
    A：不，完全免费。Yes, it's totally free!
 
-2. deb和AppImage有什么区别？Is there any difference between deb and AppImage?
+2. Q：deb和AppImage有什么区别？Is there any difference between deb and AppImage?
    
    A：基本上没什么区别，deb安装方式多了关闭自动保存代码的功能，而AppImage能够自动检查更新。Basically they are the same, deb installation can auto-save your code when you close the APP, while AppImage can check for updates automatically.
 
-3. 和树莓派上自带的Scratch3有什么区别？What's the difference between BlockPi and Scratch3 on Raspbian?
+3. Q：和树莓派上自带的Scratch3有什么区别？What's the difference between BlockPi and Scratch3 on Raspbian?
    
    A：BlockPi能够生成Python代码，未来会更新更多Scratch3上没有的功能，更多传感器设备支持和人工智能功能。BlockPi can generate Python code. In the future, I will update more features than Scratch3, more sensor device support and even AI functions.
 
-4. 有使用说明或者教程吗？Any tutorials?
+4. Q：有使用说明或者教程吗？Any tutorials?
    
-   A：以后会在项目[Wiki](https://github.com/alienzhangyw/BlockPi/wiki)页面更新一些教程和案例。I will update some tutorials on the [Wiki](https://github.com/alienzhangyw/BlockPi/wiki) page.
+   A：以后会在项目[Wiki](https://github.com/alienzhangyw/BlockPi/wiki)页面更新一些教程和案例，也可以关注我的知乎专栏[BlockPi树莓派图形化编程
+](https://zhuanlan.zhihu.com/BlockPi)。I will update some tutorials on the [Wiki](https://github.com/alienzhangyw/BlockPi/wiki) page.
 
 ## 另外
 
