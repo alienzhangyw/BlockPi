@@ -1,0 +1,349 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id=",VaMbvzBG[v1BWrbb|S?">i</variable>
+  </variables>
+  <block type="sensehat_initialize" id="}X5)Fq}=,$GI^0}IpI_J" x="-237" y="-387">
+    <field name="EMU">FALSE</field>
+    <next>
+      <block type="sensehat_low_light" id=":TwtOXWc1pU8H:-*?tGc">
+        <field name="LOW">TRUE</field>
+        <next>
+          <block type="controls_whileUntil" id="x_)7KPG#/NQ,ag6(-,8r">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="logic_boolean" id="A(x2)e^^6%5jks]n%j$R">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="sensehat_set_pixels" id="poUqz=oR;_:keP;Lwc+r">
+                <value name="PIXELS">
+                  <block type="sensehat_pixels" id=")o4xv/|yS*{W+jr9J1Z]">
+                    <field name="0">#000000</field>
+                    <field name="1">#000000</field>
+                    <field name="2">#000000</field>
+                    <field name="3">#ff0000</field>
+                    <field name="4">#ff0000</field>
+                    <field name="5">#000000</field>
+                    <field name="6">#000000</field>
+                    <field name="7">#000000</field>
+                    <field name="8">#000000</field>
+                    <field name="9">#000000</field>
+                    <field name="10">#000000</field>
+                    <field name="11">#ff0000</field>
+                    <field name="12">#ff0000</field>
+                    <field name="13">#000000</field>
+                    <field name="14">#000000</field>
+                    <field name="15">#000000</field>
+                    <field name="16">#000000</field>
+                    <field name="17">#000000</field>
+                    <field name="18">#ff0000</field>
+                    <field name="19">#ff0000</field>
+                    <field name="20">#ff0000</field>
+                    <field name="21">#ff0000</field>
+                    <field name="22">#000000</field>
+                    <field name="23">#000000</field>
+                    <field name="24">#000000</field>
+                    <field name="25">#000000</field>
+                    <field name="26">#ff0000</field>
+                    <field name="27">#ff0000</field>
+                    <field name="28">#ff0000</field>
+                    <field name="29">#ff0000</field>
+                    <field name="30">#000000</field>
+                    <field name="31">#000000</field>
+                    <field name="32">#000000</field>
+                    <field name="33">#000000</field>
+                    <field name="34">#ff0000</field>
+                    <field name="35">#ff0000</field>
+                    <field name="36">#ff0000</field>
+                    <field name="37">#ff0000</field>
+                    <field name="38">#000000</field>
+                    <field name="39">#000000</field>
+                    <field name="40">#000000</field>
+                    <field name="41">#000000</field>
+                    <field name="42">#ff0000</field>
+                    <field name="43">#ff0000</field>
+                    <field name="44">#ff0000</field>
+                    <field name="45">#ff0000</field>
+                    <field name="46">#000000</field>
+                    <field name="47">#000000</field>
+                    <field name="48">#000000</field>
+                    <field name="49">#000000</field>
+                    <field name="50">#000000</field>
+                    <field name="51">#ff0000</field>
+                    <field name="52">#ff0000</field>
+                    <field name="53">#000000</field>
+                    <field name="54">#000000</field>
+                    <field name="55">#000000</field>
+                    <field name="56">#000000</field>
+                    <field name="57">#000000</field>
+                    <field name="58">#ff0000</field>
+                    <field name="59">#ff0000</field>
+                    <field name="60">#ff0000</field>
+                    <field name="61">#ff0000</field>
+                    <field name="62">#000000</field>
+                    <field name="63">#000000</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_sleep" id="M]e.RLq,IfGRKzyT{2Oi">
+                    <value name="SECONDS">
+                      <shadow type="math_number" id="xXb2d[:ls2bgVB56,s_r">
+                        <field name="NUM">10</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="controls_repeat_ext" id=";tk_w/q)l9F8Djx6chcR">
+                        <value name="TIMES">
+                          <shadow type="math_number" id="rU}%bCKR7Uqsu44LS=|n">
+                            <field name="NUM">25</field>
+                          </shadow>
+                        </value>
+                        <statement name="DO">
+                          <block type="sensehat_set_pixels" id="[sm]6.d}cMW/iTZ%j@Gz">
+                            <value name="PIXELS">
+                              <block type="sensehat_pixels" id="%;SIT7@cUe$swUP7kwHw">
+                                <field name="0">#000000</field>
+                                <field name="1">#000000</field>
+                                <field name="2">#000000</field>
+                                <field name="3">#33cc00</field>
+                                <field name="4">#33cc00</field>
+                                <field name="5">#000000</field>
+                                <field name="6">#000000</field>
+                                <field name="7">#000000</field>
+                                <field name="8">#000000</field>
+                                <field name="9">#000000</field>
+                                <field name="10">#000000</field>
+                                <field name="11">#33cc00</field>
+                                <field name="12">#33cc00</field>
+                                <field name="13">#000000</field>
+                                <field name="14">#000000</field>
+                                <field name="15">#000000</field>
+                                <field name="16">#000000</field>
+                                <field name="17">#000000</field>
+                                <field name="18">#33cc00</field>
+                                <field name="19">#33cc00</field>
+                                <field name="20">#33cc00</field>
+                                <field name="21">#000000</field>
+                                <field name="22">#000000</field>
+                                <field name="23">#000000</field>
+                                <field name="24">#000000</field>
+                                <field name="25">#33cc00</field>
+                                <field name="26">#000000</field>
+                                <field name="27">#33cc00</field>
+                                <field name="28">#33cc00</field>
+                                <field name="29">#33cc00</field>
+                                <field name="30">#000000</field>
+                                <field name="31">#000000</field>
+                                <field name="32">#000000</field>
+                                <field name="33">#33cc00</field>
+                                <field name="34">#000000</field>
+                                <field name="35">#33cc00</field>
+                                <field name="36">#33cc00</field>
+                                <field name="37">#000000</field>
+                                <field name="38">#33cc00</field>
+                                <field name="39">#000000</field>
+                                <field name="40">#000000</field>
+                                <field name="41">#000000</field>
+                                <field name="42">#000000</field>
+                                <field name="43">#33cc00</field>
+                                <field name="44">#33cc00</field>
+                                <field name="45">#000000</field>
+                                <field name="46">#000000</field>
+                                <field name="47">#000000</field>
+                                <field name="48">#000000</field>
+                                <field name="49">#000000</field>
+                                <field name="50">#33cc00</field>
+                                <field name="51">#000000</field>
+                                <field name="52">#000000</field>
+                                <field name="53">#33cc00</field>
+                                <field name="54">#000000</field>
+                                <field name="55">#000000</field>
+                                <field name="56">#000000</field>
+                                <field name="57">#000000</field>
+                                <field name="58">#33cc00</field>
+                                <field name="59">#000000</field>
+                                <field name="60">#000000</field>
+                                <field name="61">#000000</field>
+                                <field name="62">#33cc00</field>
+                                <field name="63">#000000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="time_sleep" id="S$m8REx%r.Mj{vg9]PxZ">
+                                <value name="SECONDS">
+                                  <shadow type="math_number" id="SK8x++trvIx3l=~XGb/`">
+                                    <field name="NUM">0.3</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="sensehat_set_pixels" id="R,@1JchqGa?Y}F~s:R7S">
+                                    <value name="PIXELS">
+                                      <block type="sensehat_pixels" id="q!tfn7/cUjm*q}I6~]kz" inline="false">
+                                        <field name="0">#000000</field>
+                                        <field name="1">#000000</field>
+                                        <field name="2">#000000</field>
+                                        <field name="3">#33cc00</field>
+                                        <field name="4">#33cc00</field>
+                                        <field name="5">#000000</field>
+                                        <field name="6">#000000</field>
+                                        <field name="7">#000000</field>
+                                        <field name="8">#000000</field>
+                                        <field name="9">#000000</field>
+                                        <field name="10">#000000</field>
+                                        <field name="11">#33cc00</field>
+                                        <field name="12">#33cc00</field>
+                                        <field name="13">#000000</field>
+                                        <field name="14">#000000</field>
+                                        <field name="15">#000000</field>
+                                        <field name="16">#000000</field>
+                                        <field name="17">#000000</field>
+                                        <field name="18">#000000</field>
+                                        <field name="19">#33cc00</field>
+                                        <field name="20">#33cc00</field>
+                                        <field name="21">#33cc00</field>
+                                        <field name="22">#000000</field>
+                                        <field name="23">#000000</field>
+                                        <field name="24">#000000</field>
+                                        <field name="25">#000000</field>
+                                        <field name="26">#33cc00</field>
+                                        <field name="27">#33cc00</field>
+                                        <field name="28">#33cc00</field>
+                                        <field name="29">#000000</field>
+                                        <field name="30">#33cc00</field>
+                                        <field name="31">#000000</field>
+                                        <field name="32">#000000</field>
+                                        <field name="33">#33cc00</field>
+                                        <field name="34">#000000</field>
+                                        <field name="35">#33cc00</field>
+                                        <field name="36">#33cc00</field>
+                                        <field name="37">#000000</field>
+                                        <field name="38">#33cc00</field>
+                                        <field name="39">#000000</field>
+                                        <field name="40">#000000</field>
+                                        <field name="41">#000000</field>
+                                        <field name="42">#000000</field>
+                                        <field name="43">#33cc00</field>
+                                        <field name="44">#33cc00</field>
+                                        <field name="45">#000000</field>
+                                        <field name="46">#000000</field>
+                                        <field name="47">#000000</field>
+                                        <field name="48">#000000</field>
+                                        <field name="49">#000000</field>
+                                        <field name="50">#33cc00</field>
+                                        <field name="51">#000000</field>
+                                        <field name="52">#000000</field>
+                                        <field name="53">#33cc00</field>
+                                        <field name="54">#000000</field>
+                                        <field name="55">#000000</field>
+                                        <field name="56">#000000</field>
+                                        <field name="57">#33cc00</field>
+                                        <field name="58">#000000</field>
+                                        <field name="59">#000000</field>
+                                        <field name="60">#000000</field>
+                                        <field name="61">#33cc00</field>
+                                        <field name="62">#000000</field>
+                                        <field name="63">#000000</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="time_sleep" id=")PyO?Z`9o[[k@{BI2m+Q">
+                                        <value name="SECONDS">
+                                          <shadow type="math_number" id="E{.-WxK`p3O?elSb~;Hf">
+                                            <field name="NUM">0.3</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_for" id="!J/CWuP`s2Wo1l@76Nwm">
+                            <field name="VAR" id=",VaMbvzBG[v1BWrbb|S?">i</field>
+                            <value name="FROM">
+                              <shadow type="math_number" id="W6;|Uwqpn6,vtq.*i^)D">
+                                <field name="NUM">9</field>
+                              </shadow>
+                            </value>
+                            <value name="TO">
+                              <shadow type="math_number" id="s_Sch@;kzGc|JL*ppNMA">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <value name="BY">
+                              <shadow type="math_number" id="h4rp#/nOctsPR*thA_h|">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <statement name="DO">
+                              <block type="sensehat_show_letter" id="fjl}+.^1iDq)z55afgzo">
+                                <value name="LETTER">
+                                  <shadow type="text" id="$(u)(}{^x42pyqv`8-C9">
+                                    <field name="TEXT">B</field>
+                                  </shadow>
+                                  <block type="text_join" id="n8xCV,q/lN?o/tE@q3Md">
+                                    <mutation items="1"/>
+                                    <value name="ADD0">
+                                      <block type="variables_get" id="zMwPby9.9`=$rQE^ALTd">
+                                        <field name="VAR" id=",VaMbvzBG[v1BWrbb|S?">i</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="TEXTCOLOUR">
+                                  <shadow type="colour_picker" id="cq4yfRoxsNd`{-C=CLEw">
+                                    <field name="COLOUR">#33cc00</field>
+                                  </shadow>
+                                </value>
+                                <value name="BACKCOLOUR">
+                                  <shadow type="colour_picker" id="6VPm{eK_lq,%Mu(P:/(h">
+                                    <field name="COLOUR">#000000</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="time_sleep" id="Fd~@qF9TRN?#yHcV`?YB">
+                                    <value name="SECONDS">
+                                      <shadow type="math_number" id="l_8g!NL*i=UdKxvP|Q=E">
+                                        <field name="NUM">0.7</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block type="sensehat_clear" id="P+^QjU9cis2ecjWwy)/B">
+                                        <value name="COLOUR">
+                                          <shadow type="colour_picker" id="fu8j[r,rF,!6,GNQC-b2">
+                                            <field name="COLOUR">#000000</field>
+                                          </shadow>
+                                        </value>
+                                        <next>
+                                          <block type="time_sleep" id="Xag+%9V;=k2R~L5Tv?:o">
+                                            <value name="SECONDS">
+                                              <shadow type="math_number" id="ikHX_Zdl{_yUX:%5:c.D">
+                                                <field name="NUM">0.3</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
