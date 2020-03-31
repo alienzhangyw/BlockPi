@@ -64,6 +64,8 @@ to install them and then try the dpkg command again.
 
 ### AppImage
 
+先下载运行requirements.sh文件。First, download the requirements.sh file and run it.
+
 右键AppImage文件，选择文件属性-权限-执行-所有人，确定。Right-click the AppImage file, choose file properties-permittions-execute-everyone, confirm.
 
 双击直接运行程序。Double-click to run the APP.
