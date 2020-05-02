@@ -1,0 +1,99 @@
+{
+  "name": "blockpi",
+  "version": "1.1.2",
+  "description": "A visual programming editor for Raspberry Pi",
+  "main": "BlockPi/main.js",
+  "scripts": {
+    "build:blocks": "gulp build-blocks",
+    "build:generator": "gulp build-python",
+    "start": "electron .",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "author": {
+    "name": "Zhang Yiwei",
+    "email": "alienzhangyw@live.cn"
+  },
+  "homepage": "https://github.com/alienzhangyw/BlockPi",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alienzhangyw/BlockPi.git"
+  },
+  "devDependencies": {
+    "electron": "^8.2.3",
+    "electron-builder": "^22.4.1",
+    "fs": "0.0.1-security",
+    "google-closure-compiler": "^20200101.0.0",
+    "google-closure-deps": "^20200101.0.0",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-series": "^1.0.2",
+    "gulp-shell": "^0.7.1",
+    "gulp-umd": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "yargs": "^14.0.0"
+  },
+  "dependencies": {
+    "electron-updater": "^4.2.5",
+    "iconv-lite": "^0.5.0"
+  },
+  "build": {
+    "appId": "com.electron.blockpi",
+    "productName": "BlockPi",
+    "copyright": "Copyright © 2019-2020 ${author}",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "BlockPi/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "createDesktopShortcut": true
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": "armv7l"
+        },
+        {
+          "target": "deb",
+          "arch": "armv7l"
+        }
+      ],
+      "category": "Education",
+      "publish": "github"
+    },
+    "appImage": {
+      "license": "build/LICENSE.txt"
+    },
+    "deb": {
+      "fpm": [
+        "--architecture=armhf",
+        "--before-install=build/requirements.sh"
+      ],
+      "depends": [
+        "gconf2",
+        "gconf-service",
+        "libnotify4",
+        "libappindicator1",
+        "libxtst6",
+        "libnss3",
+        "python3-gpiozero",
+        "sense-hat",
+        "python3-sense-emu",
+        "sense-emu-tools"
+      ]
+    }
+  }
+}

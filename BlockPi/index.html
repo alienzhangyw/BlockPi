@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="google" value="notranslate">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <meta http-equiv="X-Content-Security-Policy"
+    content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <title>BlockPi</title>
+  <link rel="stylesheet" href="src/style/style.css">
+  <script src="src/script/storage.js"></script>
+  <script src="src/script/blockly_compressed.js"></script>
+  <script src="src/script/blocks_compressed.js"></script>
+  <script src="src/script/python_compressed.js"></script>
+  <script src="src/script/code.js"></script>
+  <script src="src/script/custom-dialog.js"></script>
+</head>
+
+<body>
+  <table width="100%" height="100%">
+    <tr>
+      <td>
+        <a href="https://github.com/alienzhangyw/BlockPi" target="_blank">
+          <img src="src/media/logo.png" alt="BlockPi" width="25%">
+        </a>
+        <a id="version" href="https://github.com/alienzhangyw/BlockPi/releases/latest" target="_blank"></a>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_python" class="taboff">Python</td>
+            <td class="tabmax">
+              <input type="file" id="fileElem" accept=".xml" style="display: none;"
+                onchange="BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace())">
+              <button id="openButton" class="notext" title="...">
+                <img src='src/media/1x1.gif' class="open icon21">
+              </button>
+              <button id="saveButton" class="notext" title="...">
+                <img src='src/media/1x1.gif' class="save icon21">
+              </button>
+              <button id="trashButton" class="notext" title="...">
+                <img src='src/media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="runButton" class="notext" title="...">
+                <img src='src/media/1x1.gif' class="run icon21">
+              </button>
+              <button id="stopButton" class="notext" title="...">
+                <img src='src/media/1x1.gif' class="stop icon21">
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr height="100%">
+      <td colspan=2>
+        <table width="100%" height="100%">
+          <tr width="100%">
+            <td id="content_area">
+            </td>
+            <td id="output_area">
+              <table height="100%" width="100%">
+                <tr height=1em>
+                  <td id="output_title">...</td>
+                  <td align="right" id="output_button">
+                    <button id="clearOutputButton" class="notext" title="...">
+                      <img src='src/media/1x1.gif' class="trash icon21">
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan=2><textarea id="output" readonly="readonly" wrap="off"></textarea></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_python" class="content prettyprint lang-py"><code></code></pre>
+
+  <xml id="toolbox" style="display: none">
+    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+      <block type="math_number">
+        <field name="NUM">123</field>
+      </block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+      <block type="math_atan2">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATLISTS}" colour="%{BKY_LISTS_HUE}">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_extend">
+        <value name="LIST1">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <shadow type="text">
+            <field name="TEXT">,</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_sort"></block>
+    </category>
+    <category name="%{BKY_CATDICTIONARIES}" colour="%{BKY_DICTIONARIES_HUE}">
+      <block type="dictionaries_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="dictionaries_create_with"></block>
+      <block type="dictionaries_create_with_list">
+        <value name="KEYS">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="dictionaries_update"></block>
+      <block type="dictionaries_length"></block>
+      <block type="dictionaries_isEmpty"></block>
+      <block type="dictionaries_key_in">
+        <value name="KEY">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="dictionaries_get_key">
+        <value name="KEY">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="dictionaries_set_key">
+        <value name="KEY">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="dictionaries_keys"></block>
+    </category>
+    <category name="%{BKY_CATCOLOUR}" colour="%{BKY_COLOUR_HUE}">
+      <block type="colour_picker"></block>
+      <block type="colour_random"></block>
+      <block type="colour_rgb">
+        <value name="RED">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="GREEN">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="BLUE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="COLOUR2">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#3333ff</field>
+          </shadow>
+        </value>
+        <value name="RATIO">
+          <shadow type="math_number">
+            <field name="NUM">0.5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="colour_convert">
+        <value name="COLOUR">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATTIME}" colour="%{BKY_TIME_HUE}">
+      <block type="time_sleep">
+        <value name="SECONDS">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="time_stamp"></block>
+      <block type="time_struct"></block>
+      <block type="time_time"></block>
+      <block type="time_date"></block>
+    </category>
+    <sep></sep>
+    <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+    <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+    <sep></sep>
+    <category name="%{BKY_CATRASPBERRYPI}" expanded="true">
+      <category name="%{BKY_CATGPIOIN}" colour="%{BKY_GPIOIN_HUE}">
+        <block type="gpio_input_digital">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="device">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_input_smoothed">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="device">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_button">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="button">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">button</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_linesensor">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="linesensor">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">line</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_motionsensor">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="motionsensor">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">motion</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_lightsensor">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="lightsensor">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">light</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_distancesensor">
+          <value name="echo">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="trigger">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="distancesensor">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">distance</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_input_value">
+          <value name="device">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_close_in">
+          <value name="device">
+            <block type="gpio_devices_in">
+              <field name="VAR" variabletype="DeviceIN">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <category name="%{BKY_CATGPIOOUT}" colour="%{BKY_GPIOOUT_HUE}">
+        <block type="gpio_output">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_pwm">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_pwm_dc">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+          <value name="dc">
+            <shadow type="math_number"></shadow>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_pwm_frequency">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+          <value name="frequency">
+            <shadow type="math_number">
+              <field name="NUM">100</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="gpio_led">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="led">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">led</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_rgbled">
+          <value name="r">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="g">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="b">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="rgbled">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">rgbled</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_rgbled_colour">
+          <value name="rgbled">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">rgbled</field>
+            </block>
+          </value>
+          <value name="colour">
+            <shadow type="colour_picker"></shadow>
+          </value>
+        </block>
+        <block type="gpio_buzzer">
+          <value name="PIN">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="buzzer">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">buzzer</field>
+            </block>
+          </value>
+        </block>
+        <block type="gpio_pwm_breath">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+          <value name="on">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="off">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+          <value name="in">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="out">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="n">
+            <shadow type="logic_null"></shadow>
+          </value>
+        </block>
+        <block type="gpio_output_on">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_output_off">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_output_toggle">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_output_value">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="gpio_output_value_set">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+          <value name="value">
+            <shadow type="math_number">
+              <field name="NUM">1</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="gpio_close_out">
+          <value name="device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">{deviceVariable}</field>
+            </block>
+          </value>
+        </block>
+      </category>
+      <category name="%{BKY_CATTUBE}" colour="%{BKY_GPIOOUT_HUE}">
+        <block type="tube_initialize">
+          <value name="CLK">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="DIO">
+            <shadow type="math_number"></shadow>
+          </value>
+          <value name="Device">
+            <block type="gpio_devices_out">
+              <field name="VAR" variabletype="DeviceOUT">tube</field>
+            </block>
+          </value>
+        </block>
+        <block type="tube_brightness"></block>
+        <block type="tube_write">
+          <value name="POS">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="tube_number">
+          <value name="Value">
+            <shadow type="math_number">
+              <field name="NUM">8888</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="tube_numbers">
+          <value name="Value1">
+            <shadow type="math_number">
+              <field name="NUM">12</field>
+            </shadow>
+          </value>
+          <value name="Value2">
+            <shadow type="math_number">
+              <field name="NUM">34</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="tube_temperature">
+          <value name="Value">
+            <shadow type="math_number">
+              <field name="NUM">-4</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="tube_show">
+          <value name="Value">
+            <shadow type="text">
+              <field name="TEXT">abcd</field>
+            </shadow>
+        </block>
+        <block type="tube_scroll">
+          <value name="Value">
+            <shadow type="text">
+              <field name="TEXT">BlockPi</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="tube_clear"></block>
+      </category>
+      <category name="SenseHAT" colour="%{BKY_SENSEHAT_HUE}">
+        <block type="sensehat_initialize">
+          <field name="EMU">FALSE</field>
+        </block>
+        <block type="sensehat_set_rotation">
+          <field name="ROTATION">0</field>
+        </block>
+        <sep gap="8"></sep>
+        <block type="sensehat_flip_h"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_flip_v"></block>
+        <block type="sensehat_pixels">
+          <field name="0">#000000</field>
+          <field name="1">#000000</field>
+          <field name="2">#009900</field>
+          <field name="3">#006600</field>
+          <field name="4">#006600</field>
+          <field name="5">#009900</field>
+          <field name="6">#000000</field>
+          <field name="7">#000000</field>
+          <field name="8">#000000</field>
+          <field name="9">#000000</field>
+          <field name="10">#006600</field>
+          <field name="11">#009900</field>
+          <field name="12">#009900</field>
+          <field name="13">#006600</field>
+          <field name="14">#000000</field>
+          <field name="15">#000000</field>
+          <field name="16">#000000</field>
+          <field name="17">#000000</field>
+          <field name="18">#000000</field>
+          <field name="19">#003300</field>
+          <field name="20">#003300</field>
+          <field name="21">#000000</field>
+          <field name="22">#000000</field>
+          <field name="23">#000000</field>
+          <field name="24">#000000</field>
+          <field name="25">#000000</field>
+          <field name="26">#660000</field>
+          <field name="27">#cc0000</field>
+          <field name="28">#cc0000</field>
+          <field name="29">#660000</field>
+          <field name="30">#000000</field>
+          <field name="31">#000000</field>
+          <field name="32">#000000</field>
+          <field name="33">#000000</field>
+          <field name="34">#660000</field>
+          <field name="35">#cc0000</field>
+          <field name="36">#cc0000</field>
+          <field name="37">#660000</field>
+          <field name="38">#000000</field>
+          <field name="39">#000000</field>
+          <field name="40">#000000</field>
+          <field name="41">#660000</field>
+          <field name="42">#ff0000</field>
+          <field name="43">#660000</field>
+          <field name="44">#660000</field>
+          <field name="45">#ff0000</field>
+          <field name="46">#660000</field>
+          <field name="47">#000000</field>
+          <field name="48">#000000</field>
+          <field name="49">#000000</field>
+          <field name="50">#660000</field>
+          <field name="51">#cc0000</field>
+          <field name="52">#cc0000</field>
+          <field name="53">#660000</field>
+          <field name="54">#000000</field>
+          <field name="55">#000000</field>
+          <field name="56">#000000</field>
+          <field name="57">#000000</field>
+          <field name="58">#000000</field>
+          <field name="59">#990000</field>
+          <field name="60">#990000</field>
+          <field name="61">#000000</field>
+          <field name="62">#000000</field>
+          <field name="63">#000000</field>
+        </block>
+        <sep gap="8"></sep>
+        <block type="sensehat_set_pixels"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_set_pixel">
+          <value name="X">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="Y">
+            <shadow type="math_number">
+              <field name="NUM">0</field>
+            </shadow>
+          </value>
+          <value name="COLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#ff0000</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensehat_load_image">
+          <value name="FILE">
+            <shadow type="text">
+              <field name="TEXT">8x8pixels.png</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensehat_clear">
+          <value name="COLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#000000</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensehat_show_message">
+          <value name="MESSAGE">
+            <shadow type="text">
+              <field name="TEXT">BlockPi</field>
+            </shadow>
+          </value>
+          <value name="SPEED">
+            <shadow type="math_number">
+              <field name="NUM">0.1</field>
+            </shadow>
+          </value>
+          <value name="TEXTCOLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#ffffff</field>
+            </shadow>
+          </value>
+          <value name="BACKCOLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#000000</field>
+            </shadow>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="sensehat_show_letter">
+          <value name="LETTER">
+            <shadow type="text">
+              <field name="TEXT">B</field>
+            </shadow>
+          </value>
+          <value name="TEXTCOLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#ffffff</field>
+            </shadow>
+          </value>
+          <value name="BACKCOLOUR">
+            <shadow type="colour_picker">
+              <field name="COLOUR">#000000</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="sensehat_low_light"></block>
+        <block type="sensehat_get_humidity"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_temperature"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_pressure"></block>
+        <block type="sensehat_set_imu_config"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_orientation"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_compass"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_gyroscope"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_get_accelerometer"></block>
+        <block type="sensehat_wait_for_event"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_event_timestamp"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_event_direction"></block>
+        <sep gap="8"></sep>
+        <block type="sensehat_event_action"></block>
+        <block type="sensehat_get_events"></block>
+        <block type="sensehat_joystick_pushed"></block>
+      </category>
+    </category>
+  </xml>
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="@q]3*L-6|TnY~vB!aFwk">compass</variable>
+  </variables>
+  <block type="sensehat_initialize" id="U8o^~$J$;aUu,i!i.8Su" x="63" y="38">
+    <field name="EMU">FALSE</field>
+    <next>
+      <block type="sensehat_low_light" id="zSgt,vS@l5_|,78|Vp8K">
+        <field name="LOW">TRUE</field>
+        <next>
+          <block type="sensehat_set_rotation" id="YxN[uaci?-bThfZrOZ_*">
+            <field name="ROTATION">90</field>
+            <next>
+              <block type="controls_whileUntil" id="x%we50#klI7XN`d|3}|]">
+                <field name="MODE">WHILE</field>
+                <value name="BOOL">
+                  <block type="logic_boolean" id="D]5k^sd-r!XvS?P$VD31">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="variables_set" id="Lr5ULge4uR6Y(D1+k*`O">
+                    <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                    <value name="VALUE">
+                      <block type="sensehat_get_compass" id="APx?*Wdw*=(r)v#+j/Cn"/>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="Jv?[EYWxb}etj0r_y.~6">
+                        <value name="IF0">
+                          <block type="logic_operation" id="Q0G^K?I2Nn?1#8AkH65R">
+                            <field name="OP">OR</field>
+                            <value name="A">
+                              <block type="logic_compare" id="A;~K8#*{*@IYsfS8wUn8">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="q;}kYv}R{@a{9LO%)iZ6">
+                                    <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="H-M?=tuJC)]jWM~NL+|4">
+                                    <field name="NUM">45</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="s.tLq0;IPYgmbbG)KQV*">
+                                <field name="OP">GT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="@9tuc|-5#.kJd+5$hH{K">
+                                    <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="pt1lz+P(x[ERpq,Xf2P{">
+                                    <field name="NUM">315</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="sensehat_show_letter" id="=7.vhhyN_gN/rpMx*v+M">
+                            <value name="LETTER">
+                              <shadow type="text" id="ugwnJc*J{PJgC27lxy^L">
+                                <field name="TEXT">B</field>
+                              </shadow>
+                              <block type="text" id="uTAu9Nr@bURryJ8#%ZKG">
+                                <field name="TEXT">N</field>
+                              </block>
+                            </value>
+                            <value name="TEXTCOLOUR">
+                              <shadow type="colour_picker" id="(34DMh3KVzeQyz/=8VNX">
+                                <field name="COLOUR">#990000</field>
+                              </shadow>
+                            </value>
+                            <value name="BACKCOLOUR">
+                              <shadow type="colour_picker" id="A+FL|5sVArEHmFIkj#kN">
+                                <field name="COLOUR">#000000</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="controls_if" id="Bdi#=gHS$O9STKR0cOCU">
+                            <value name="IF0">
+                              <block type="logic_operation" id=")VXL.K8O1_grlCV^l,[2">
+                                <field name="OP">AND</field>
+                                <value name="A">
+                                  <block type="logic_compare" id="R0QdBCqk~x00@(y(fLeS">
+                                    <field name="OP">GT</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="%lxv@9/-F6Pyn:5Nh}Jv">
+                                        <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="T.O2qsv7wL+5eRkw$k@]">
+                                        <field name="NUM">45</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="logic_compare" id="_^OtFr1]#~qS1?-`@Sn#">
+                                    <field name="OP">LT</field>
+                                    <value name="A">
+                                      <block type="variables_get" id="IqLhxA_5Xnz9s0d;#L,_">
+                                        <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number" id="ogQNKwc#H/J3fS~PYyLT">
+                                        <field name="NUM">135</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="sensehat_show_letter" id="wpSbW1rREk|FK462CkEN">
+                                <value name="LETTER">
+                                  <shadow type="text">
+                                    <field name="TEXT">B</field>
+                                  </shadow>
+                                  <block type="text" id="2D#hAD6Qv;j(YsDy;j{9">
+                                    <field name="TEXT">E</field>
+                                  </block>
+                                </value>
+                                <value name="TEXTCOLOUR">
+                                  <shadow type="colour_picker" id="M27e|U[o5x9ek5V|):Oc">
+                                    <field name="COLOUR">#999999</field>
+                                  </shadow>
+                                </value>
+                                <value name="BACKCOLOUR">
+                                  <shadow type="colour_picker" id="LFN^@aNvHi3e]bDnyj!a">
+                                    <field name="COLOUR">#000000</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if" id="fS}lYwCX;4^`SO!JL%?}">
+                                <value name="IF0">
+                                  <block type="logic_operation" id="R.jO9:%P!Br[G[Ym%/[S">
+                                    <field name="OP">AND</field>
+                                    <value name="A">
+                                      <block type="logic_compare" id="`5(H.MS;N!jlgd2cT)`%">
+                                        <field name="OP">GT</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="b]6CTKMy|BMJ!g$aVl(9">
+                                            <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="mSs?RAG4I9AorKXX1+r;">
+                                            <field name="NUM">135</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="logic_compare" id="qm89D13GR-8wrG([HsY[">
+                                        <field name="OP">LT</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="i_|$,MgN,F[#vJ;0t,i:">
+                                            <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="math_number" id="=V27[P|n%2bn:Xu-21IQ">
+                                            <field name="NUM">225</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="sensehat_show_letter" id="|9Xx4r,M}nWfk58Kl7wz">
+                                    <value name="LETTER">
+                                      <shadow type="text">
+                                        <field name="TEXT">B</field>
+                                      </shadow>
+                                      <block type="text" id="aG]nvn@;BF^+12%@-Bdv">
+                                        <field name="TEXT">S</field>
+                                      </block>
+                                    </value>
+                                    <value name="TEXTCOLOUR">
+                                      <shadow type="colour_picker" id="9(x|OV3s508nh;SNsasF">
+                                        <field name="COLOUR">#000099</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="BACKCOLOUR">
+                                      <shadow type="colour_picker" id="E%Hzax?MW$KWL.H]fVgy">
+                                        <field name="COLOUR">#000000</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="controls_if" id="p00?ZZF{KX({33!bDB~R">
+                                    <value name="IF0">
+                                      <block type="logic_operation" id="%d_j_YkumE|UEU-A~ViF">
+                                        <field name="OP">AND</field>
+                                        <value name="A">
+                                          <block type="logic_compare" id="qSxkMQ!Zj@eFIuz,ZPI#">
+                                            <field name="OP">GT</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="W@_}u$C`GF|T=ZG..M@K">
+                                                <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="yWg/j=b/YvQ0)ALTrv#8">
+                                                <field name="NUM">225</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="logic_compare" id="VK4_.Q6o~4%.IV,qJD?g">
+                                            <field name="OP">LT</field>
+                                            <value name="A">
+                                              <block type="variables_get" id="sjz[ZO86:fEf8u*JSr)0">
+                                                <field name="VAR" id="@q]3*L-6|TnY~vB!aFwk">compass</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="math_number" id="b71y3(l`=4_0twbQWXPW">
+                                                <field name="NUM">315</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="sensehat_show_letter" id="r$qS1WF,K3Qo1qkgtq*V">
+                                        <value name="LETTER">
+                                          <shadow type="text">
+                                            <field name="TEXT">B</field>
+                                          </shadow>
+                                          <block type="text" id="Pswkc3=6qg7SS1}).Gi)">
+                                            <field name="TEXT">W</field>
+                                          </block>
+                                        </value>
+                                        <value name="TEXTCOLOUR">
+                                          <shadow type="colour_picker" id="bI^{D};X`xcj:SdDBfGj">
+                                            <field name="COLOUR">#999999</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="BACKCOLOUR">
+                                          <shadow type="colour_picker" id="}P4Y2C34dz,gpjKi[2Bp">
+                                            <field name="COLOUR">#000000</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
