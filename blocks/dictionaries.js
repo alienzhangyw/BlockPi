@@ -306,31 +306,82 @@ Blockly.Blocks['dictionaries_create_with_item'] = {
 
 Blockly.Blocks['dictionaries_get_key'] = {
   init: function() {
-    var thisBlock = this;
-    var dropdown = new Blockly.FieldDropdown(
+    var MODE =
         [
           [Blockly.Msg['DICTIONARIES_GET_KEY'], "GET"],
-          [Blockly.Msg['DICTIONARIES_POP_KEY'], "POP"]
-        ]);
+          [Blockly.Msg['DICTIONARIES_POP_KEY'], "POP"],
+          [Blockly.Msg['DICTIONARIES_DEL_KEY'], "DEL"]
+      ];
+    var modeMenu = new Blockly.FieldDropdown(MODE, function(value) {
+      var isStatement = (value == 'DEL');
+      this.getSourceBlock().updateStatement_(isStatement);
+    });
     this.appendValueInput("DICT")
         .setCheck("Dictionary")
         .appendField(Blockly.Msg['DICTIONARIES_GET_KEY_DICT']);
     this.appendValueInput("KEY")
         .setCheck("String")
-        .appendField(dropdown, "MODE");
+        .appendField(modeMenu, "MODE");
     this.setInputsInline(true);
-    this.setOutput(true, null);
+    this.setOutput(true);
     this.setColour(Blockly.Msg['DICTIONARIES_HUE']);
+    var thisBlock = this;
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('MODE');
       if (mode == 'GET') {
         return Blockly.Msg['DICTIONARIES_GET_KEY_TOOLTIP'];
       } else if (mode == 'POP') {
         return Blockly.Msg['DICTIONARIES_POP_KEY_TOOLTIP'];
+      } else if (mode == 'DEL') {
+        return Blockly.Msg['DICTIONARIES_DEL_KEY_TOOLTIP']
       }
       throw Error('Unknown mode: ' + mode);
     });
     this.setHelpUrl("");
+  },
+  /**
+   * Create XML to represent whether the block is a statement or a value.
+   * @return {Element} XML storage element.
+   * @this {Blockly.Block}
+   */
+  mutationToDom: function() {
+     var container = Blockly.utils.xml.createElement('mutation');
+     var isStatement = !this.outputConnection;
+     container.setAttribute('statement', isStatement);
+     return container;
+  },
+  /**
+   * Parse XML to restore the 'AT' input.
+   * @param {!Element} xmlElement XML storage element.
+   * @this {Blockly.Block}
+   */
+  domToMutation: function(xmlElement) {
+    // Note: Until January 2013 this block did not have mutations,
+    // so 'statement' defaults to false.
+    var isStatement = (xmlElement.getAttribute('statement') == 'true');
+    this.updateStatement_(isStatement);
+  },
+  /**
+   * Switch between a value block and a statement block.
+   * @param {boolean} newStatement True if the block should be a statement.
+   *     False if the block should be a value.
+   * @private
+   * @this {Blockly.Block}
+   */
+  updateStatement_: function (newStatement) {
+    var oldStatement = !this.outputConnection;
+    if (newStatement != oldStatement) {
+      this.unplug(true, true);
+      if (newStatement) {
+        this.setOutput(false);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      } else {
+        this.setPreviousStatement(false);
+        this.setNextStatement(false);
+        this.setOutput(true);
+      }
+    }
   }
 };
 

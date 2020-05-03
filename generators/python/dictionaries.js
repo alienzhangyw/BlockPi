@@ -66,7 +66,9 @@ Blockly.Python['dictionaries_get_key'] = function(block) {
     return [dict + '[' + key + ']', Blockly.Python.ORDER_MEMBER];
   } else if (mode == 'POP') {
     return [dict + '.pop(' + key + ')', Blockly.Python.ORDER_FUNCTION_CALL];
-  }  
+  } else if (mode == 'DEL') {
+    return 'del ' + dict + '[' + key + ']\n';
+  }
 };
 
 Blockly.Python['dictionaries_keys'] = function(block) {
