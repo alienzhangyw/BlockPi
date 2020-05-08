@@ -958,6 +958,62 @@
         <block type="sensehat_get_events"></block>
         <block type="sensehat_joystick_pushed"></block>
       </category>
+      <category name="%{BKY_CATPICAMERA}" colour="%{BKY_CAMERA_HUE}">
+        <block type="camera_enable"></block>
+        <block type="camera_preview"></block>
+        <block type="camera_resolution"></block>
+        <sep gap="8"></sep>
+        <block type="camera_framerate"></block>
+        <sep gap="8"></sep>
+        <block type="camera_flip"></block>
+        <sep gap="8"></sep>
+        <block type="camera_rotate"></block>
+        <block type="camera_image_effect"></block>
+        <block type="camera_capture">
+          <value name="NAME">
+            <shadow type="text">
+              <field name="TEXT">image</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="camera_record">
+          <value name="NAME">
+            <shadow type="text">
+              <field name="TEXT">video</field>
+            </shadow>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="camera_stop_recording"></block>
+        <block type="camera_web_stream"></block>
+        <block type="camera_annotate_text">
+          <value name="TEXT">
+            <shadow type="text"></shadow>
+          </value>
+        </block>
+        <sep gap="8"></sep>
+        <block type="camera_annotate_size"></block>
+        <sep gap="8"></sep>
+        <block type="camera_annotate_colour"></block>
+        <label text="%{BKY_CATPICAMERAPRO}"></label>
+        <block type="camera_meter_mode"></block>
+        <sep gap="8"></sep>
+        <block type="camera_exposure_mode"></block>
+        <sep gap="8"></sep>
+        <block type="camera_awb_mode"></block>
+        <block type="camera_iso"></block>
+        <sep gap="8"></sep>
+        <block type="camera_shutter_speed"></block>
+        <sep gap="8"></sep>
+        <block type="camera_exposure_compensation"></block>
+        <block type="camera_brightness"></block>
+        <sep gap="8"></sep>
+        <block type="camera_sharpness"></block>
+        <sep gap="8"></sep>
+        <block type="camera_contrast"></block>
+        <sep gap="8"></sep>
+        <block type="camera_saturation"></block>
+      </category>
     </category>
   </xml>
 

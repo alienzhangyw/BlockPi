@@ -28,6 +28,8 @@ var MSG = {
   catGPIOin: "GPIO IN",
   catGPIOout: "GPIO OUT",
   catTube: "Digital Tube",
+  catPicamera: "Picamera",
+  catPicameraPro: "Professional Mode",
   listVariable: "list",
   textVariable: "text",
   deviceVariable: "device",

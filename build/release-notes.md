@@ -1,3 +1,8 @@
+# 1.1.3
+
+Add a new category of Picamera blocks.\
+新增摄像头积木模块。
+
 # 1.1.2
 
 Add a new category of digital tube blocks.\

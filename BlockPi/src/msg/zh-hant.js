@@ -28,6 +28,8 @@ var MSG = {
   catGPIOin: "通用輸入",
   catGPIOout: "通用輸出",
   catTube: "數碼管",
+  catPicamera: "攝像頭",
+  catPicameraPro: "專業模式",
   listVariable: "清單",
   textVariable: "文字",
   deviceVariable: "設備",

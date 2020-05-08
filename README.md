@@ -10,7 +10,7 @@ A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), b
 
 - 完整的Blockly移植到树莓派上，完全免费使用。Full Blockly features on RPi, free to use.
 
-- 集成树莓派GPIO控制，支持[Sense HAT](https://www.raspberrypi.org/products/sense-hat/)，未来支持更多树莓派外设和功能。Build-in GPIO control and [Sense HAT]([https://www.raspberrypi.org/products/sense-hat/) support, and more functions in the future.
+- 集成树莓派GPIO控制，支持[Sense HAT](https://www.raspberrypi.org/products/sense-hat/)和CSI摄像头，未来支持更多树莓派外设和功能。Build-in GPIO control, [Sense HAT]([https://www.raspberrypi.org/products/sense-hat/) and CSI Picamera support, and more functions in the future.
 
 - 程序可直接在应用内运行，同时可转化成Python代码，方便学习Python。Code runs in the app, and can be convert to Python. Helpful to learn Python.
 
@@ -39,7 +39,7 @@ If not, please make sure your Linux-based RPi system have Nodejs v12+ and Python
 - 或者使用用终端命令：Or you can use command in shell:
 
 ```shell
-sudo dpkg -i blockpi_1.0.2_armv7l.deb
+sudo dpkg -i blockpi_1.1.3_armv7l.deb
 ```
 
 注意自己的文件名。Pay attention to your file name.
@@ -72,7 +72,7 @@ to install them and then try the dpkg command again.
 
 ```shell
 sudo apt update
-sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools
+sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools python3-picamera
 ```
 
 ### Windows x64
@@ -128,7 +128,7 @@ yarn build:generator
 yarn start
 ```
 
-打包发行Win x64版本/Pack and build Win x64 version:
+打包发行Windows版本/Pack and build Windows version:
 
 ```shell
 yarn dist:win

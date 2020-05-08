@@ -80,7 +80,7 @@ Blockly.Python.addReservedWords(
     'next,object,oct,open,ord,pow,print,property,quit,range,raw_input,reduce,' +
     'reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,' +
     'sum,super,tuple,type,unichr,unicode,vars,xrange,zip' + 
-    'time,gpiozero,tm1637,sense_hat,sense_emu,SenseHat,sense,event'
+    'time,gpiozero,tm1637,sense_hat,sense_emu,SenseHat,sense,event,camera,Picamera,Color,picamera'
 );
 
 /**

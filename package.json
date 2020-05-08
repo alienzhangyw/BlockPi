@@ -1,6 +1,6 @@
 {
   "name": "blockpi",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A visual programming editor for Raspberry Pi",
   "main": "BlockPi/main.js",
   "scripts": {
@@ -92,7 +92,8 @@
         "python3-gpiozero",
         "sense-hat",
         "python3-sense-emu",
-        "sense-emu-tools"
+        "sense-emu-tools",
+        "python3-picamera"
       ]
     }
   }
