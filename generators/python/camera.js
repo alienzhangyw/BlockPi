@@ -133,7 +133,7 @@ Blockly.Python['camera_annotate_text'] = function(block) {
 
 Blockly.Python['camera_annotate_size'] = function(block) {
   var size = block.getFieldValue('SIZE');
-  return 'camera.annotate_size = ' + size + '\n';
+  return 'camera.annotate_text_size = ' + size + '\n';
 };
 
 Blockly.Python['camera_annotate_colour'] = function (block) {
