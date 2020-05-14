@@ -1,3 +1,8 @@
+# 1.1.4
+
+Fix a bug.\
+修复一个错误。
+
 # 1.1.3
 
 Add a new category of Picamera blocks.\
