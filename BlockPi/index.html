@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="author" content="Zhang Yiwei">
   <meta name="google" value="notranslate">
   <meta http-equiv="Content-Security-Policy"
     content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:">
@@ -19,74 +20,55 @@
 </head>
 
 <body>
-  <table width="100%" height="100%">
-    <tr>
-      <td>
-        <a href="https://github.com/alienzhangyw/BlockPi" target="_blank">
-          <img src="src/media/logo.png" alt="BlockPi" width="25%">
-        </a>
-        <a id="version" href="https://github.com/alienzhangyw/BlockPi/releases/latest" target="_blank"></a>
-      </td>
-      <td class="farSide">
-        <select id="languageMenu"></select>
-      </td>
-    </tr>
-    <tr>
-      <td colspan=2>
-        <table width="100%">
-          <tr id="tabRow" height="1em">
-            <td id="tab_blocks" class="tabon">...</td>
-            <td class="tabmin">&nbsp;</td>
-            <td id="tab_python" class="taboff">Python</td>
-            <td class="tabmax">
-              <input type="file" id="fileElem" accept=".xml" style="display: none;"
-                onchange="BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace())">
-              <button id="openButton" class="notext" title="...">
-                <img src='src/media/1x1.gif' class="open icon21">
-              </button>
-              <button id="saveButton" class="notext" title="...">
-                <img src='src/media/1x1.gif' class="save icon21">
-              </button>
-              <button id="trashButton" class="notext" title="...">
-                <img src='src/media/1x1.gif' class="trash icon21">
-              </button>
-              <button id="runButton" class="notext" title="...">
-                <img src='src/media/1x1.gif' class="run icon21">
-              </button>
-              <button id="stopButton" class="notext" title="...">
-                <img src='src/media/1x1.gif' class="stop icon21">
-              </button>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr height="100%">
-      <td colspan=2>
-        <table width="100%" height="100%">
-          <tr width="100%">
-            <td id="content_area">
-            </td>
-            <td id="output_area">
-              <table height="100%" width="100%">
-                <tr height=1em>
-                  <td id="output_title">...</td>
-                  <td align="right" id="output_button">
-                    <button id="clearOutputButton" class="notext" title="...">
-                      <img src='src/media/1x1.gif' class="trash icon21">
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan=2><textarea id="output" readonly="readonly" wrap="off"></textarea></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+  <header>
+    <h1>
+      <a href="https://github.com/alienzhangyw/BlockPi" target="_blank" title="BlockPi Homepage">
+        <img src="src/media/logo.png" alt="BlockPi">
+      </a>
+    </h1>
+    <a id="version" href="https://github.com/alienzhangyw/BlockPi/releases/latest" target="_blank"
+      title="Check out the latest version.">asdasd</a>
+    <em></em>
+    <span class="farSide">
+      <select id="languageMenu"></select>
+    </span>
+  </header>
+
+
+  <section class="clearfix">
+    <h2 class="tabon" id="tab_blocks"></h2>
+    <h2 class="taboff" id="tab_python">Python</h2>
+    <div class="buttonBox">
+      <input type="file" id="fileElem" accept=".xml"
+        onchange="BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace())">
+      <button id="openButton" title="open">
+        <img src='src/media/1x1.gif' class="open icon21">
+      </button>
+      <button id="saveButton" title="save">
+        <img src='src/media/1x1.gif' class="save icon21">
+      </button>
+      <button id="trashButton" title="clear">
+        <img src='src/media/1x1.gif' class="trash icon21">
+      </button>
+      <button id="runButton" title="run">
+        <img src='src/media/1x1.gif' class="run icon21">
+      </button>
+      <button id="stopButton" title="stop">
+        <img src='src/media/1x1.gif' class="stop icon21">
+      </button>
+    </div>
+  </section>
+  <section class="workspace clearfix">
+    <div id="content_area"></div>
+    <div>
+      <p><span id="output_title">Output:</span>
+        <button id="clearOutputButton" title="clear output">
+          <img src='src/media/1x1.gif' class="trash icon21">
+        </button></p>
+      <textarea id="output" readonly="readonly" wrap="off"></textarea>
+    </div>
+  </section>
+
   <div id="content_blocks" class="content"></div>
   <pre id="content_python" class="content prettyprint lang-py"><code></code></pre>
 
@@ -1016,7 +998,6 @@
       </category>
     </category>
   </xml>
-
 </body>
 
 </html>
