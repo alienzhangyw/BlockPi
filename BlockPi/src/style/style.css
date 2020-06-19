@@ -8,7 +8,6 @@ input{outline:0;border:0}
 .clearfix{zoom:1}
 body{background:#fff;font-family:sans-serif;overflow:auto;display:flex;flex-direction:column;min-width:600px;min-height:600px}
 header{display:flex;align-items:center;margin:4px 6px;max-height:50px;padding:5px 0}
-header h1 img{height:100%}
 header>a{font-size:20px;color:#5778e2;align-self:flex-end}
 header em{flex:1}
 section{width:100%}
