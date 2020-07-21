@@ -386,7 +386,11 @@ Code.init = function () {
   }
   Code.bindClick('openButton',
     function () {
-      document.getElementById("fileElem").click();
+      var fileElem = document.getElementById("fileElem");
+      fileElem.onchange = function () {
+        BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace());
+      };
+      fileElem.click();
     })
   Code.bindClick('saveButton',
     function () {
@@ -508,37 +512,36 @@ Code.runPython = function () {
     child = spawn('python', ['-u', pyfile]);
   }
   child.stdout.on('data', (data) => {
-    // 如果在中文windows环境下遇到输出乱码，请去掉以下代码的注释。
-    // if (process.platform === 'win32') {
-    //   if (navigator.language === 'zh-CN' || navigator.language === 'zh-SG') {
-    //     var iconv = require('iconv-lite');
-    //     var outData = iconv.decode(Buffer.from(data), 'cp936');
-    //   } else if (navigator.language === 'zh-TW' || navigator.language === 'zh-HK') {
-    //     var iconv = require('iconv-lite');
-    //     var outData = iconv.decode(Buffer.from(data), 'cp950');
-    //   } else {
-    //     var outData = Buffer.from(data, 'utf-8').toString('utf-8');
-    //   }
-    // } else {
+    if (process.platform === 'win32') {
+      if (navigator.language === 'zh-CN' || navigator.language === 'zh-SG') {
+        var iconv = require('iconv-lite');
+        var outData = iconv.decode(Buffer.from(data), 'cp936');
+      } else if (navigator.language === 'zh-TW' || navigator.language === 'zh-HK') {
+        var iconv = require('iconv-lite');
+        var outData = iconv.decode(Buffer.from(data), 'cp950');
+      } else {
+        var outData = Buffer.from(data, 'utf-8').toString('utf-8');
+      }
+    } else {
       var outData = Buffer.from(data, 'utf-8').toString('utf-8');
-    // }
-    if (outData.includes('PROMPT:')) {
-      document.getElementById('output').innerHTML += outData.split('PROMPT:')[0];
+    }
+    if (outData.startsWith('PROMPT:')) {
+      document.getElementById('output').value += outData.split('PROMPT:')[0];
       document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
       Blockly.prompt(outData.split('PROMPT:')[1], '', function (input) {
         child.stdin.write(input + '\n', 'utf-8');
       });
     } else {
-      document.getElementById('output').innerHTML += outData;
+      document.getElementById('output').value += outData;
       document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
     }
   });
   child.stderr.on('data', (err) => {
-    document.getElementById('output').innerHTML += Buffer.from(err, 'utf-8').toString();
+    document.getElementById('output').value += Buffer.from(err, 'utf-8').toString();
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   });
   child.on('exit', () => {
-    document.getElementById('output').innerHTML += MSG['codeEnd'];
+    document.getElementById('output').value += MSG['codeEnd'];
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   })
 };

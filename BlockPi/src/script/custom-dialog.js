@@ -85,20 +85,10 @@ CustomDialog.show = function (title, message, options) {
     // Generate HTML
     backdropDiv = document.createElement('div');
     backdropDiv.id = 'customDialogBackdrop';
-    backdropDiv.style.cssText =
-      'position: absolute;' +
-      'top: 0; left: 0; right: 0; bottom: 0;' +
-      'background-color: rgba(0, 0, 0, .7);' +
-      'z-index: 100;';
     document.body.appendChild(backdropDiv);
 
     dialogDiv = document.createElement('div');
     dialogDiv.id = 'customDialog';
-    dialogDiv.style.cssText =
-      'background-color: #fff;' +
-      'width: 400px;' +
-      'margin: 20px auto 0;' +
-      'padding: 10px;';
     backdropDiv.appendChild(dialogDiv);
 
     dialogDiv.onclick = function (event) {
@@ -166,8 +156,6 @@ CustomDialog.show = function (title, message, options) {
       .addEventListener('click', onCancel);
     document.getElementById('customDialogCancel').textContent = Blockly.Msg["IOS_CANCEL"];
   }
-
-  backdropDiv.onclick = onCancel;
 };
 
 /**
