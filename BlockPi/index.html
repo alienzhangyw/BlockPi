@@ -217,6 +217,20 @@
       </block>
     </category>
     <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
       <block type="text"></block>
       <block type="text_join"></block>
       <block type="text_append">
@@ -278,18 +292,28 @@
           </shadow>
         </value>
       </block>
-      <block type="text_print">
+      <block type="text_count">
+        <value name="SUB">
+          <shadow type="text"></shadow>
+        </value>
         <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
+          <shadow type="text"></shadow>
         </value>
       </block>
-      <block type="text_prompt_ext">
+      <block type="text_replace">
+        <value name="FROM">
+          <shadow type="text"></shadow>
+        </value>
+        <value name="TO">
+          <shadow type="text"></shadow>
+        </value>
         <value name="TEXT">
-          <shadow type="text">
-            <field name="TEXT">abc</field>
-          </shadow>
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_reverse">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
         </value>
       </block>
     </category>
@@ -350,6 +374,7 @@
         </value>
       </block>
       <block type="lists_sort"></block>
+      <block type="lists_reverse"></block>
     </category>
     <category name="%{BKY_CATDICTIONARIES}" colour="%{BKY_DICTIONARIES_HUE}">
       <block type="dictionaries_create_with">
@@ -445,7 +470,7 @@
     <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
     <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
     <sep></sep>
-    <category name="%{BKY_CATRASPBERRYPI}" expanded="true">
+    <category name="%{BKY_CATRASPBERRYPI}" expanded="true" colour="">
       <category name="%{BKY_CATGPIOIN}" colour="%{BKY_GPIOIN_HUE}">
         <block type="gpio_input_digital">
           <value name="PIN">

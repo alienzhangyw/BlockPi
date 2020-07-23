@@ -6,6 +6,4 @@ build-debug.log
 .settings
 .project
 .vscode
-yarn.lock
 package-lock.json
-code.py

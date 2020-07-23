@@ -83,7 +83,6 @@ app.on('web-contents-created', (e, webContents) => {
 new Menu()
 Menu.setApplicationMenu(null)
 
-ipcMain.on('get-version', (event, arg) => {
-    var version = app.getVersion()
-    event.sender.send('send-version', version)
+ipcMain.on('app-version', (event, arg) => {
+    event.sender.send('app-version', { version: app.getVersion() })
 })

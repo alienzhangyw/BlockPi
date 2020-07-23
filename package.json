@@ -22,25 +22,21 @@
     "url": "https://github.com/alienzhangyw/BlockPi.git"
   },
   "devDependencies": {
-    "electron": "^8.2.3",
-    "electron-builder": "^22.4.1",
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
     "fs": "0.0.1-security",
-    "google-closure-compiler": "^20200101.0.0",
-    "google-closure-deps": "^20200101.0.0",
+    "google-closure-compiler": "^20200719.0.0",
+    "google-closure-deps": "^20200628.0.0",
     "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-insert": "^0.5.0",
-    "gulp-rename": "^1.4.0",
+    "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-series": "^1.0.2",
-    "gulp-shell": "^0.7.1",
-    "gulp-umd": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
     "rimraf": "^3.0.2",
-    "yargs": "^14.0.0"
+    "yargs": "^15.4.1"
   },
   "dependencies": {
-    "electron-updater": "^4.2.5",
-    "iconv-lite": "^0.5.0"
+    "electron-updater": "^4.3.1",
+    "iconv-lite": "^0.6.2"
   },
   "build": {
     "appId": "com.electron.blockpi",

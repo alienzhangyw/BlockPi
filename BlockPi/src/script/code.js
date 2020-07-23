@@ -314,11 +314,12 @@ Code.init = function () {
 
   const {
     ipcRenderer
-  } = require('electron')
+  } = require('electron');
 
-  ipcRenderer.send('get-version', 'version')
-  ipcRenderer.on('send-version', (event, arg) => {
-    document.getElementById('version').innerHTML = 'Version: ' + arg;
+  ipcRenderer.send('app-version', 'version');
+  ipcRenderer.on('app-version', (event, arg) => {
+    document.getElementById('version').innerText = 'Version: ' + arg.version;
+    ipcRenderer.removeAllListeners('app_version');
 })
 
   // The toolbox XML specifies each category name using Blockly's messaging
@@ -420,7 +421,7 @@ Code.init = function () {
     });
   Code.bindClick('clearOutputButton',
     function () {
-      document.getElementById('output').innerHTML = '';
+      document.getElementById('output').value = '';
     }
   )
 
@@ -512,24 +513,32 @@ Code.runPython = function () {
     child = spawn('python', ['-u', pyfile]);
   }
   child.stdout.on('data', (data) => {
+    var iconv = require('iconv-lite');
+    var outData;
     if (process.platform === 'win32') {
       if (navigator.language === 'zh-CN' || navigator.language === 'zh-SG') {
-        var iconv = require('iconv-lite');
-        var outData = iconv.decode(Buffer.from(data), 'cp936');
+        outData = iconv.decode(Buffer.from(data), 'gbk');
       } else if (navigator.language === 'zh-TW' || navigator.language === 'zh-HK') {
-        var iconv = require('iconv-lite');
-        var outData = iconv.decode(Buffer.from(data), 'cp950');
+        outData = iconv.decode(Buffer.from(data), 'cp950');
       } else {
-        var outData = Buffer.from(data, 'utf-8').toString('utf-8');
+        outData = Buffer.from(data, 'utf8').toString('utf8');
       }
     } else {
-      var outData = Buffer.from(data, 'utf-8').toString('utf-8');
+      outData = Buffer.from(data, 'utf8').toString('utf8');
     }
-    if (outData.startsWith('PROMPT:')) {
+    if (outData.includes('PROMPT:')) {
       document.getElementById('output').value += outData.split('PROMPT:')[0];
       document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
       Blockly.prompt(outData.split('PROMPT:')[1], '', function (input) {
-        child.stdin.write(input + '\n', 'utf-8');
+        var inputData = Buffer.from(input + '\n');
+        if (process.platform === 'win32') {
+          if (navigator.language === 'zh-CN' || navigator.language === 'zh-SG') {
+            inputData = iconv.encode(input + '\n', 'gbk');
+          } else if (navigator.language === 'zh-TW' || navigator.language === 'zh-HK') {
+            inputData = iconv.encode(input + '\n', 'cp950');
+          }
+        }
+        child.stdin.write(inputData, 'utf8');
       });
     } else {
       document.getElementById('output').value += outData;
@@ -537,7 +546,7 @@ Code.runPython = function () {
     }
   });
   child.stderr.on('data', (err) => {
-    document.getElementById('output').value += Buffer.from(err, 'utf-8').toString();
+    document.getElementById('output').value += Buffer.from(err, 'utf8').toString();
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   });
   child.on('exit', () => {
