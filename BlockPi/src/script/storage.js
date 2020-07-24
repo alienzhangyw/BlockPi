@@ -63,9 +63,10 @@ BlocklyStorage.loadXml_ = function(xml, workspace) {
     BlocklyStorage.alert(BlocklyStorage.XML_ERROR + '\nXML: ' + xml);
     return;
   }
-  // Clear the workspace to avoid merge.
-  workspace.clear();
-  Blockly.Xml.domToWorkspace(xml, workspace);
+  // Ask whether to merge or override.
+  Blockly.confirm(MSG['merge'], (merge) => {
+    merge ? Blockly.Xml.appendDomToWorkspace(xml, workspace) : Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
+  })
 };
 
 /**

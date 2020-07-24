@@ -36,9 +36,10 @@ var MSG = {
   textVariable: "文字",
   deviceVariable: "設備",
   httpRequestError: "命令出現錯誤。",
-  linkAlert: "透過此連結分享您的積木組：\n\n%1",  
+  linkAlert: "透過此連結分享您的積木組：\n\n%1",
   typeError: "您載入的不是XML檔案！",
   hashError: "對不起，「%1」並未對應任何已保存的程式。",
   xmlError: "未能載入您保存的檔案。或許它是由其他版本的Blockly創建？",
-  badXml: "解析 XML 時出現錯誤：\n%1\n\n選擇'確定'以放棄您的更改，或選擇'取消'以進一步編輯 XML。"
+  badXml: "解析 XML 時出現錯誤：\n%1\n\n選擇'確定'以放棄您的更改，或選擇'取消'以進一步編輯 XML。",
+  merge: "是否將要載入的檔案與現有積木合併？"
 };
