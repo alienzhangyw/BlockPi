@@ -13,18 +13,7 @@
   /*
 
  Copyright 2012 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ SPDX-License-Identifier: Apache-2.0
 */
 'use strict';Blockly.Python=new Blockly.Generator("Python");Blockly.Python.addReservedWords("False,None,True,and,as,assert,break,class,continue,def,del,elif,else,except,exec,finally,for,from,global,if,import,in,is,lambda,nonlocal,not,or,pass,print,raise,return,try,while,with,yield,NotImplemented,Ellipsis,__debug__,quit,exit,copyright,license,credits,ArithmeticError,AssertionError,AttributeError,BaseException,BlockingIOError,BrokenPipeError,BufferError,BytesWarning,ChildProcessError,ConnectionAbortedError,ConnectionError,ConnectionRefusedError,ConnectionResetError,DeprecationWarning,EOFError,Ellipsis,EnvironmentError,Exception,FileExistsError,FileNotFoundError,FloatingPointError,FutureWarning,GeneratorExit,IOError,ImportError,ImportWarning,IndentationError,IndexError,InterruptedError,IsADirectoryError,KeyError,KeyboardInterrupt,LookupError,MemoryError,ModuleNotFoundError,NameError,NotADirectoryError,NotImplemented,NotImplementedError,OSError,OverflowError,PendingDeprecationWarning,PermissionError,ProcessLookupError,RecursionError,ReferenceError,ResourceWarning,RuntimeError,RuntimeWarning,StandardError,StopAsyncIteration,StopIteration,SyntaxError,SyntaxWarning,SystemError,SystemExit,TabError,TimeoutError,TypeError,UnboundLocalError,UnicodeDecodeError,UnicodeEncodeError,UnicodeError,UnicodeTranslateError,UnicodeWarning,UserWarning,ValueError,Warning,ZeroDivisionError,_,__build_class__,__debug__,__doc__,__import__,__loader__,__name__,__package__,__spec__,abs,all,any,apply,ascii,basestring,bin,bool,buffer,bytearray,bytes,callable,chr,classmethod,cmp,coerce,compile,complex,copyright,credits,delattr,dict,dir,divmod,enumerate,eval,exec,execfile,exit,file,filter,float,format,frozenset,getattr,globals,hasattr,hash,help,hex,id,input,int,intern,isinstance,issubclass,iter,len,license,list,locals,long,map,max,memoryview,min,next,object,oct,open,ord,pow,print,property,quit,range,raw_input,reduce,reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,sum,super,tuple,type,unichr,unicode,vars,xrange,ziptime,gpiozero,tm1637,sense_hat,sense_emu,SenseHat,sense,event,camera,Picamera,Color,picamera");
 Blockly.Python.ORDER_ATOMIC=0;Blockly.Python.ORDER_COLLECTION=1;Blockly.Python.ORDER_STRING_CONVERSION=1;Blockly.Python.ORDER_MEMBER=2.1;Blockly.Python.ORDER_FUNCTION_CALL=2.2;Blockly.Python.ORDER_EXPONENTIATION=3;Blockly.Python.ORDER_UNARY_SIGN=4;Blockly.Python.ORDER_BITWISE_NOT=4;Blockly.Python.ORDER_MULTIPLICATIVE=5;Blockly.Python.ORDER_ADDITIVE=6;Blockly.Python.ORDER_BITWISE_SHIFT=7;Blockly.Python.ORDER_BITWISE_AND=8;Blockly.Python.ORDER_BITWISE_XOR=9;Blockly.Python.ORDER_BITWISE_OR=10;
@@ -38,18 +27,7 @@ Blockly.Python.scrub_=function(a,b,c){var d="";if(!a.outputConnection||!a.output
 c?"":Blockly.Python.blockToCode(a);return d+b+c};Blockly.Python.getAdjustedInt=function(a,b,c,d){c=c||0;a.workspace.options.oneBasedIndex&&c--;var e=a.workspace.options.oneBasedIndex?"1":"0";a=Blockly.Python.valueToCode(a,b,c?Blockly.Python.ORDER_ADDITIVE:Blockly.Python.ORDER_NONE)||e;Blockly.isNumber(a)?(a=parseInt(a,10)+c,d&&(a=-a)):(a=0<c?"int("+a+" + "+c+")":0>c?"int("+a+" - "+-c+")":"int("+a+")",d&&(a="-"+a));return a};/*
 
  Copyright 2020 Zhang Yiwei
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ SPDX-License-Identifier: Apache-2.0
 */
 Blockly.Python.camera={};Blockly.Python.camera_enable=function(a){a=a.getFieldValue("DO");if("ENABLE"==a)return Blockly.Python.definitions_.from_picamera_import_PiCamera="from picamera import PiCamera","camera = PiCamera()\n";if("STOP"==a)return"camera.close()\n"};Blockly.Python.camera_preview=function(a){a=a.getFieldValue("DO");if("START"==a)return"camera.start_preview(fullscreen=False, window=(0,0,800,600))\n";if("STOP"==a)return"camera.stop_preview()\n"};
 Blockly.Python.camera_capture=function(a){var b=Blockly.Python.valueToCode(a,"NAME",Blockly.Python.ORDER_NONE);a=a.getFieldValue("TYPE");return"camera.capture("+b+"+'."+a+"')\n"};Blockly.Python.camera_record=function(a){return"camera.start_recording("+Blockly.Python.valueToCode(a,"NAME",Blockly.Python.ORDER_ATOMIC)+"+'.h264')\n"};Blockly.Python.camera_stop_recording=function(a){return"camera.stop_recording()\n"};
@@ -178,23 +156,7 @@ Blockly.Python.tube_write=function(a){var b=Blockly.Python.variableDB_.getName(a
 Blockly.Python.tube_number=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE);a=Blockly.Python.valueToCode(a,"Value",Blockly.Python.ORDER_NONE)||0;return b+".number("+a+")\n"};
 Blockly.Python.tube_numbers=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE),c=Blockly.Python.valueToCode(a,"Value1",Blockly.Python.ORDER_NONE)||0,d="TRUE"==a.getFieldValue("Colon")?"True":"False";a=Blockly.Python.valueToCode(a,"Value2",Blockly.Python.ORDER_NONE)||0;return b+".numbers("+c+", "+a+", "+d+")\n"};
 Blockly.Python.tube_temperature=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE);a=Blockly.Python.valueToCode(a,"Value",Blockly.Python.ORDER_NONE||0);return b+".temperature("+a+")\n"};Blockly.Python.tube_show=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE);a=Blockly.Python.valueToCode(a,"Value",Blockly.Python.ORDER_NONE)||"'    '";return b+".show("+a+")\n"};
-Blockly.Python.tube_scroll=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE),c=Blockly.Python.valueToCode(a,"Value",Blockly.Python.ORDER_NONE);a=a.getFieldValue("Delay");return b+".scroll("+c+", "+a+")\n"};Blockly.Python.tube_clear=function(a){return Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE)+".show('    ')\n"};Blockly.Python.variables={};Blockly.Python.variables_get=function(a){return[Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.VARIABLE_CATEGORY_NAME),Blockly.Python.ORDER_ATOMIC]};Blockly.Python.variables_set=function(a){var b=Blockly.Python.valueToCode(a,"VALUE",Blockly.Python.ORDER_NONE)||"0";return Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.VARIABLE_CATEGORY_NAME)+" = "+b+"\n"};/*
-
- Copyright 2018 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-Blockly.Python.variablesDynamic={};Blockly.Python.variables_get_dynamic=Blockly.Python.variables_get;Blockly.Python.variables_set_dynamic=Blockly.Python.variables_set;
+Blockly.Python.tube_scroll=function(a){var b=Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE),c=Blockly.Python.valueToCode(a,"Value",Blockly.Python.ORDER_NONE);a=a.getFieldValue("Delay");return b+".scroll("+c+", "+a+")\n"};Blockly.Python.tube_clear=function(a){return Blockly.Python.variableDB_.getName(a.getFieldValue("Device"),Blockly.Variables.NAME_TYPE)+".show('    ')\n"};Blockly.Python.variables={};Blockly.Python.variables_get=function(a){return[Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.VARIABLE_CATEGORY_NAME),Blockly.Python.ORDER_ATOMIC]};Blockly.Python.variables_set=function(a){var b=Blockly.Python.valueToCode(a,"VALUE",Blockly.Python.ORDER_NONE)||"0";return Blockly.Python.variableDB_.getName(a.getFieldValue("VAR"),Blockly.VARIABLE_CATEGORY_NAME)+" = "+b+"\n"};Blockly.Python.variablesDynamic={};Blockly.Python.variables_get_dynamic=Blockly.Python.variables_get;Blockly.Python.variables_set_dynamic=Blockly.Python.variables_set;
 return Blockly.Python;
 }));
 

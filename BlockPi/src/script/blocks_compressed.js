@@ -13,18 +13,7 @@
   /*
 
  Copyright 2020 Zhang Yiwei
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
+ SPDX-License-Identifier: Apache-2.0
 */
 'use strict';Blockly.Blocks.camera={};Blockly.Constants={};Blockly.Constants.Camera={};Blockly.Constants.Camera.HUE=135;
 Blockly.defineBlocksWithJsonArray([{type:"camera_enable",message0:"%{BKY_CAMERA_ENABLE_TITLE}",args0:[{type:"field_dropdown",name:"DO",options:[["%{BKY_CAMERA_ENABLE_ENABLE}","ENABLE"],["%{BKY_CAMERA_ENABLE_STOP}","STOP"]]}],previousStatement:null,nextStatement:null,colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_ENABLE_TOOLTIP}",helpUrl:""},{type:"camera_preview",message0:"%{BKY_CAMERA_PREVIEW_TITLE}",args0:[{type:"field_dropdown",name:"DO",options:[["%{BKY_CAMERA_PREVIEW_OPEN}","START"],["%{BKY_CAMERA_PREVIEW_CLOSE}",
@@ -44,23 +33,7 @@ colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_AWB_MODE_TOOLTIP}",helpUrl:""},
 "antishake"],["%{BKY_CAMERA_EXPOSURE_MODE_FIREWORKS}","fireworks"]]}],previousStatement:null,nextStatement:null,colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_EXPOSURE_MODE_TOOLTIP}",helpUrl:""},{type:"camera_meter_mode",message0:"%{BKY_CAMERA_METER_MODE_TITLE}",args0:[{type:"field_dropdown",name:"MODE",options:[["%{BKY_CAMERA_METER_MODE_AVERAGE}","average"],["%{BKY_CAMERA_METER_MODE_SPOT}","spot"],["%{BKY_CAMERA_METER_MODE_BACKLIT}","backlit"],["%{BKY_CAMERA_METER_MODE_MATRIX}","matrix"]]}],previousStatement:null,
 nextStatement:null,colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_METER_MODE_TOOLTIP}",helpUrl:""},{type:"camera_image_effect",message0:"%{BKY_CAMERA_IMAGE_EFFECT_TITLE}",args0:[{type:"field_dropdown",name:"MODE",options:[["%{BKY_CAMERA_IMAGE_EFFECT_NONE}","none"],["%{BKY_CAMERA_IMAGE_EFFECT_NEGATIVE}","negative"],["%{BKY_CAMERA_IMAGE_EFFECT_SOLARIZE}","solarize"],["%{BKY_CAMERA_IMAGE_EFFECT_SKETCH}","sketch"],["%{BKY_CAMERA_IMAGE_EFFECT_DENOISE}","denoise"],["%{BKY_CAMERA_IMAGE_EFFECT_EMBOSS}",
 "emboss"],["%{BKY_CAMERA_IMAGE_EFFECT_OILPAINT}","oilpaint"],["%{BKY_CAMERA_IMAGE_EFFECT_HATCH}","hatch"],["%{BKY_CAMERA_IMAGE_EFFECT_GPEN}","gpen"],["%{BKY_CAMERA_IMAGE_EFFECT_PASTEL}","pastel"],["%{BKY_CAMERA_IMAGE_EFFECT_WATERCOLOR}","watercolor"],["%{BKY_CAMERA_IMAGE_EFFECT_FILM}","film"],["%{BKY_CAMERA_IMAGE_EFFECT_BLUR}","blur"],["%{BKY_CAMERA_IMAGE_EFFECT_SATURATION}","saturation"],["%{BKY_CAMERA_IMAGE_EFFECT_COLORSWAP}","colorswap"],["%{BKY_CAMERA_IMAGE_EFFECT_WASHEDOUT}","washedout"],["%{BKY_CAMERA_IMAGE_EFFECT_POSTERISE}",
-"posterise"],["%{BKY_CAMERA_IMAGE_EFFECT_COLORPOINT}","colorpoint"],["%{BKY_CAMERA_IMAGE_EFFECT_COLORBALANCE}","colorbalance"],["%{BKY_CAMERA_IMAGE_EFFECT_CARTOON}","cartoon"],["%{BKY_CAMERA_IMAGE_EFFECT_DEINTERLACE1}","deinterlace1"],["%{BKY_CAMERA_IMAGE_EFFECT_DEINTERLACE2}","deinterlace2"]]}],previousStatement:null,nextStatement:null,colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_IMAGE_EFFECT_TOOLTIP}",helpUrl:""}]);/*
-
- Copyright 2012 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-Blockly.Blocks.colour={};Blockly.Constants.Colour={};Blockly.Constants.Colour.HUE=20;
+"posterise"],["%{BKY_CAMERA_IMAGE_EFFECT_COLORPOINT}","colorpoint"],["%{BKY_CAMERA_IMAGE_EFFECT_COLORBALANCE}","colorbalance"],["%{BKY_CAMERA_IMAGE_EFFECT_CARTOON}","cartoon"],["%{BKY_CAMERA_IMAGE_EFFECT_DEINTERLACE1}","deinterlace1"],["%{BKY_CAMERA_IMAGE_EFFECT_DEINTERLACE2}","deinterlace2"]]}],previousStatement:null,nextStatement:null,colour:"%{BKY_CAMERA_HUE}",tooltip:"%{BKY_CAMERA_IMAGE_EFFECT_TOOLTIP}",helpUrl:""}]);Blockly.Blocks.colour={};Blockly.Constants.Colour={};Blockly.Constants.Colour.HUE=20;
 Blockly.defineBlocksWithJsonArray([{type:"colour_picker",message0:"%1",args0:[{type:"field_colour",name:"COLOUR",colour:"#ff0000"}],output:"Colour",helpUrl:"%{BKY_COLOUR_PICKER_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_PICKER_TOOLTIP}",extensions:["parent_tooltip_when_inline"]},{type:"colour_random",message0:"%{BKY_COLOUR_RANDOM_TITLE}",output:"Colour",helpUrl:"%{BKY_COLOUR_RANDOM_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_RANDOM_TOOLTIP}"},{type:"colour_rgb",message0:"%{BKY_COLOUR_RGB_TITLE} %{BKY_COLOUR_RGB_RED} %1 %{BKY_COLOUR_RGB_GREEN} %2 %{BKY_COLOUR_RGB_BLUE} %3",
 args0:[{type:"input_value",name:"RED",check:"Number",align:"RIGHT"},{type:"input_value",name:"GREEN",check:"Number",align:"RIGHT"},{type:"input_value",name:"BLUE",check:"Number",align:"RIGHT"}],output:"Colour",helpUrl:"%{BKY_COLOUR_RGB_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_RGB_TOOLTIP}"},{type:"colour_blend",message0:"%{BKY_COLOUR_BLEND_TITLE} %{BKY_COLOUR_BLEND_COLOUR1} %1 %{BKY_COLOUR_BLEND_COLOUR2} %2 %{BKY_COLOUR_BLEND_RATIO} %3",args0:[{type:"input_value",name:"COLOUR1",check:"Colour",
 align:"RIGHT"},{type:"input_value",name:"COLOUR2",check:"Colour",align:"RIGHT"},{type:"input_value",name:"RATIO",check:"Number",align:"RIGHT"}],output:"Colour",helpUrl:"%{BKY_COLOUR_BLEND_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_BLEND_TOOLTIP}"},{type:"colour_convert",message0:"%{BKY_COLOUR_CONVERT_TITLE}",args0:[{type:"input_value",name:"COLOUR",check:"Colour"}],inputsInline:!0,output:"Array",helpUrl:"",style:"colour_blocks",tooltip:"%{BKY_COLOUR_CONVERT_TOOLTIP}"}]);Blockly.Blocks.dictionaries={};Blockly.Constants.Dictionaries={};Blockly.Constants.Dictionaries.HUE=275;
@@ -281,23 +254,7 @@ Blockly.defineBlocksWithJsonArray([{type:"variables_get",message0:"%1",args0:[{t
 nextStatement:null,style:"variable_blocks",tooltip:"%{BKY_VARIABLES_SET_TOOLTIP}",helpUrl:"%{BKY_VARIABLES_SET_HELPURL}",extensions:["contextMenu_variableSetterGetter"]}]);
 Blockly.Constants.Variables.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN={customContextMenu:function(a){if(!this.isInFlyout){if("variables_get"==this.type)var b="variables_set",c=Blockly.Msg.VARIABLES_GET_CREATE_SET;else b="variables_get",c=Blockly.Msg.VARIABLES_SET_CREATE_GET;var d={enabled:0<this.workspace.remainingCapacity()},e=this.getField("VAR").getText();d.text=c.replace("%1",e);c=Blockly.utils.xml.createElement("field");c.setAttribute("name","VAR");c.appendChild(Blockly.utils.xml.createTextNode(e));
 e=Blockly.utils.xml.createElement("block");e.setAttribute("type",b);e.appendChild(c);d.callback=Blockly.ContextMenu.callbackFactory(this,e);a.push(d)}else if("variables_get"==this.type||"variables_get_reporter"==this.type)b={text:Blockly.Msg.RENAME_VARIABLE,enabled:!0,callback:Blockly.Constants.Variables.RENAME_OPTION_CALLBACK_FACTORY(this)},e=this.getField("VAR").getText(),d={text:Blockly.Msg.DELETE_VARIABLE.replace("%1",e),enabled:!0,callback:Blockly.Constants.Variables.DELETE_OPTION_CALLBACK_FACTORY(this)},
-a.unshift(b),a.unshift(d)}};Blockly.Constants.Variables.RENAME_OPTION_CALLBACK_FACTORY=function(a){return function(){var b=a.workspace,c=a.getField("VAR").getVariable();Blockly.Variables.renameVariable(b,c)}};Blockly.Constants.Variables.DELETE_OPTION_CALLBACK_FACTORY=function(a){return function(){var b=a.workspace,c=a.getField("VAR").getVariable();b.deleteVariableById(c.getId());b.refreshToolboxSelection()}};Blockly.Extensions.registerMixin("contextMenu_variableSetterGetter",Blockly.Constants.Variables.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN);/*
-
- Copyright 2017 Google LLC
-
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
-*/
-Blockly.Constants.VariablesDynamic={};Blockly.Constants.VariablesDynamic.HUE=310;
+a.unshift(b),a.unshift(d)}};Blockly.Constants.Variables.RENAME_OPTION_CALLBACK_FACTORY=function(a){return function(){var b=a.workspace,c=a.getField("VAR").getVariable();Blockly.Variables.renameVariable(b,c)}};Blockly.Constants.Variables.DELETE_OPTION_CALLBACK_FACTORY=function(a){return function(){var b=a.workspace,c=a.getField("VAR").getVariable();b.deleteVariableById(c.getId());b.refreshToolboxSelection()}};Blockly.Extensions.registerMixin("contextMenu_variableSetterGetter",Blockly.Constants.Variables.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN);Blockly.Constants.VariablesDynamic={};Blockly.Constants.VariablesDynamic.HUE=310;
 Blockly.defineBlocksWithJsonArray([{type:"variables_get_dynamic",message0:"%1",args0:[{type:"field_variable",name:"VAR",variable:"%{BKY_VARIABLES_DEFAULT_NAME}"}],output:null,style:"variable_dynamic_blocks",helpUrl:"%{BKY_VARIABLES_GET_HELPURL}",tooltip:"%{BKY_VARIABLES_GET_TOOLTIP}",extensions:["contextMenu_variableDynamicSetterGetter"]},{type:"variables_set_dynamic",message0:"%{BKY_VARIABLES_SET}",args0:[{type:"field_variable",name:"VAR",variable:"%{BKY_VARIABLES_DEFAULT_NAME}"},{type:"input_value",
 name:"VALUE"}],previousStatement:null,nextStatement:null,style:"variable_dynamic_blocks",tooltip:"%{BKY_VARIABLES_SET_TOOLTIP}",helpUrl:"%{BKY_VARIABLES_SET_HELPURL}",extensions:["contextMenu_variableDynamicSetterGetter"]}]);
 Blockly.Constants.VariablesDynamic.CUSTOM_CONTEXT_MENU_VARIABLE_GETTER_SETTER_MIXIN={customContextMenu:function(a){if(!this.isInFlyout){var b=this.getFieldValue("VAR");var c=this.workspace.getVariableById(b).type;if("variables_get_dynamic"==this.type){b="variables_set_dynamic";var d=Blockly.Msg.VARIABLES_GET_CREATE_SET}else b="variables_get_dynamic",d=Blockly.Msg.VARIABLES_SET_CREATE_GET;var e={enabled:0<this.workspace.remainingCapacity()},f=this.getField("VAR").getText();e.text=d.replace("%1",f);
