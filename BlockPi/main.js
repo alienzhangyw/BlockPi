@@ -4,12 +4,12 @@ const {
     screen,
     Menu,
     ipcMain,
-    shell
+    shell,
+    globalShortcut
 } = require('electron')
 const { autoUpdater } = require("electron-updater")
 
-// 开发时进行实时加载,构建发行版时要注释掉。
-require("electron-reload")('BlockPi')
+try { require("electron-reload")('BlockPi', {electron: 'node_modules/electron/dist/electron.exe'}) } catch {}
 
 // 保持对window对象的全局引用，如果不这么做的话，当JavaScript对象被
 // 垃圾回收的时候，window对象将会自动的关闭
@@ -35,9 +35,6 @@ function createWindow() {
     // 加载index.html文件
     win.loadFile('./BlockPi/index.html')
 
-    // 打开开发者工具，用于debug，构建发行版时要注释掉。
-    win.webContents.openDevTools()
-
     // 当 window 被关闭，这个事件会被触发。
     win.on('closed', () => {
         // 取消引用 window 对象，如果你的应用支持多窗口的话，
@@ -52,6 +49,10 @@ function createWindow() {
 // 部分 API 在 ready 事件触发后才能使用。
 app.on('ready', function () {
     createWindow()
+    // 绑定快捷键打开开发者工具。
+    globalShortcut.register('CommandOrControl+Shift+I', () => {
+        win.webContents.isDevToolsOpened() ? win.webContents.closeDevTools() : win.webContents.openDevTools()
+    })
     autoUpdater.checkForUpdatesAndNotify()
 })
 
@@ -78,6 +79,10 @@ app.on('web-contents-created', (e, webContents) => {
         event.preventDefault()
         shell.openExternal(url)
     })
+})
+
+app.on('will-quit', () => {
+    globalShortcut.unregisterAll()
 })
 
 // 在这个文件中，你可以续写应用剩下主进程代码。

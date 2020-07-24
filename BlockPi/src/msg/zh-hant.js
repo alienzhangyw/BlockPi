@@ -5,6 +5,8 @@ var MSG = {
   title: "程式編輯器",
   blocks: "積木",
   outputs: "程式輸出：",
+  defaultName: "新項目",
+  nameTooltip: "輸入項目名稱。",
   openTooltip: "打開 XML 程式檔案。",
   saveTooltip: "將程式保存到 XML 檔案。",
   runTooltip: "執行工作區中積木組所定義的程式。",
@@ -34,7 +36,8 @@ var MSG = {
   textVariable: "文字",
   deviceVariable: "設備",
   httpRequestError: "命令出現錯誤。",
-  linkAlert: "透過此連結分享您的積木組：\n\n%1",
+  linkAlert: "透過此連結分享您的積木組：\n\n%1",  
+  typeError: "您載入的不是XML檔案！",
   hashError: "對不起，「%1」並未對應任何已保存的程式。",
   xmlError: "未能載入您保存的檔案。或許它是由其他版本的Blockly創建？",
   badXml: "解析 XML 時出現錯誤：\n%1\n\n選擇'確定'以放棄您的更改，或選擇'取消'以進一步編輯 XML。"

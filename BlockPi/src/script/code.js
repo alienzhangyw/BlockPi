@@ -1,18 +1,7 @@
 /**
  * @license
  * Copyright 2012 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
@@ -316,11 +305,28 @@ Code.init = function () {
     ipcRenderer
   } = require('electron');
 
+  // Drag to load a file.
+  var dragbox = document.getElementById('content_blocks');
+  dragbox.ondragover = function () {
+    event.preventDefault();
+  };
+  dragbox.ondrop = function (event) {
+    event.preventDefault();
+    var file = event.dataTransfer.files[0];
+    console.log(file.name.split('.')[1].toLowerCase());
+    if (file.name.split('.')[1].toLowerCase() == 'xml') {
+      BlocklyStorage.readXMLFile(file, Blockly.getMainWorkspace());
+      document.getElementById('projectName').value = file.name.split('.')[0];
+    } else {
+      Blockly.alert(MSG['typeError']);
+    }
+  };
+
   ipcRenderer.send('app-version', 'version');
   ipcRenderer.on('app-version', (event, arg) => {
     document.getElementById('version').innerText = 'Version: ' + arg.version;
     ipcRenderer.removeAllListeners('app_version');
-})
+  })
 
   // The toolbox XML specifies each category name using Blockly's messaging
   // format (eg. `<category name="%{BKY_CATLOGIC}">`).
@@ -387,27 +393,11 @@ Code.init = function () {
   }
   Code.bindClick('openButton',
     function () {
-      var fileElem = document.getElementById("fileElem");
-      fileElem.onchange = function () {
-        BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace());
-      };
-      fileElem.click();
+      Code.openFile();
     })
   Code.bindClick('saveButton',
     function () {
-      var xml = Blockly.Xml.workspaceToDom(Code.workspace);
-      var code = Blockly.Xml.domToPrettyText(xml);
-      var blob = new Blob([code], {
-        type: 'text/xml'
-      });
-      var src = URL.createObjectURL(blob);
-      var link = document.createElement('a');
-      link.download = 'code.xml';
-      link.style.display = 'none';
-      link.href = src;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      Code.saveFile();
     })
   Code.bindClick('trashButton',
     function () {
@@ -480,6 +470,8 @@ Code.initLanguage = function () {
   document.getElementById('tab_blocks').textContent = MSG['blocks'];
   document.getElementById('output_title').textContent = MSG['outputs']
 
+  document.getElementById('projectName').placeholder = MSG['defaultName']
+  document.getElementById('projectName').title = MSG['nameTooltip'];
   document.getElementById('openButton').title = MSG['openTooltip'];
   document.getElementById('saveButton').title = MSG['saveTooltip'];
   document.getElementById('runButton').title = MSG['runTooltip'];
@@ -489,21 +481,62 @@ Code.initLanguage = function () {
 };
 
 /**
+ * Open a saved Xml file to load blocks.
+ */
+Code.openFile = function () {
+  var fileElem = document.getElementById("fileElem");
+  fileElem.onchange = function () {
+    BlocklyStorage.readXMLFile(this.files[0], Blockly.getMainWorkspace());
+    document.getElementById('projectName').value = this.files[0].name.split('.')[0];
+  };
+
+  fileElem.click();
+}
+
+/**
+ * Save the current workspace to a Xml file.
+ */
+Code.saveFile = function () {
+  var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+  var code = Blockly.Xml.domToPrettyText(xml);
+  var blob = new Blob([code], {
+    type: 'text/xml'
+  });
+  var src = URL.createObjectURL(blob);
+  var link = document.createElement('a');
+  if (document.getElementById('projectName').value == '') {
+    document.getElementById('projectName').value = document.getElementById('projectName').placeholder;
+  };
+  link.download = document.getElementById('projectName').value + '.xml';
+  link.style.display = 'none';
+  link.href = src;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+/**
  * Execute the user's code.
- * Generate a code.py file and execute it.
+ * Generate a projectName.py file and execute it.
  */
 Code.runPython = function () {
   if (child !== null) {
     child.kill();
+    child = null;
   }
+
   var fs = require('fs');
   var code = Blockly.Python.workspaceToCode(Code.workspace);
-  var pyfile = require('path').join(require('os').homedir(), 'Desktop/code.py');
+  if (document.getElementById('projectName').value == '') {
+    document.getElementById('projectName').value = document.getElementById('projectName').placeholder;
+  };
+  var filename = 'Desktop/' + document.getElementById('projectName').value + '.py'
+  var pyfile = require('path').join(require('os').homedir(), filename);
   fs.writeFile(pyfile, code, 'utf8', (err) => {
     if (err) {
       return Blockly.alert(err);
     }
   });
+
   const {
     spawn
   } = require('child_process');
@@ -512,6 +545,7 @@ Code.runPython = function () {
   } else {
     child = spawn('python', ['-u', pyfile]);
   }
+
   child.stdout.on('data', (data) => {
     var iconv = require('iconv-lite');
     var outData;
@@ -545,13 +579,16 @@ Code.runPython = function () {
       document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
     }
   });
+
   child.stderr.on('data', (err) => {
     document.getElementById('output').value += Buffer.from(err, 'utf8').toString();
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
   });
+
   child.on('exit', () => {
     document.getElementById('output').value += MSG['codeEnd'];
     document.getElementById('output').scrollTop = document.getElementById('output').scrollHeight;
+    child = null;
   })
 };
 
