@@ -5,7 +5,8 @@ const {
     Menu,
     ipcMain,
     shell,
-    globalShortcut
+    globalShortcut,
+    nativeImage
 } = require('electron')
 const { autoUpdater } = require("electron-updater")
 
@@ -29,7 +30,7 @@ function createWindow() {
             nodeIntegration: true,
             nodeIntegrationInWorker: true
         },
-        icon: 'BlockPi/src/media/logo_32x32.png'
+        icon: nativeImage.createFromPath('BlockPi/src/media/logo_32x32.png')
     })
 
     // 加载index.html文件
@@ -48,6 +49,8 @@ function createWindow() {
 // 创建浏览器窗口时，调用这个函数。
 // 部分 API 在 ready 事件触发后才能使用。
 app.on('ready', function () {
+    new Menu()
+    Menu.setApplicationMenu(null)
     createWindow()
     // 绑定快捷键打开开发者工具。
     globalShortcut.register('CommandOrControl+Shift+I', () => {
@@ -87,9 +90,6 @@ app.on('will-quit', () => {
 
 // 在这个文件中，你可以续写应用剩下主进程代码。
 // 也可以拆分成几个文件，然后用 require 导入。
-
-new Menu()
-Menu.setApplicationMenu(null)
 
 ipcMain.on('app-version', (event, arg) => {
     event.sender.send('app-version', { version: app.getVersion() })

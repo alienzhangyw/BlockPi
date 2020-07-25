@@ -40,7 +40,7 @@
     "iconv-lite": "^0.6.2"
   },
   "build": {
-    "appId": "com.electron.blockpi",
+    "appId": "com.github.alienzhangyw.blockpi",
     "productName": "BlockPi",
     "copyright": "Copyright © 2019-2020 ${author}",
     "directories": {
@@ -50,13 +50,18 @@
     "files": [
       "BlockPi/**/*"
     ],
+    "publish": [{
+      "provider": "github",
+      "owner": "alienzhangyw",
+      "repo": "BlockPi"
+    }],
     "win": {
-      "target": "nsis",
-      "publish": "github"
+      "target": "nsis"
     },
     "nsis": {
       "oneClick": true,
-      "createDesktopShortcut": true
+      "createDesktopShortcut": true,
+      "deleteAppDataOnUninstall": true
     },
     "linux": {
       "target": [
@@ -69,8 +74,7 @@
           "arch": "armv7l"
         }
       ],
-      "category": "Education",
-      "publish": "github"
+      "category": "Development"
     },
     "appImage": {
       "license": "build/LICENSE.txt"
