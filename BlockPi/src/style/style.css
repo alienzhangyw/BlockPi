@@ -44,3 +44,4 @@ pre.content{box-sizing:border-box;overflow:scroll;font-family:Consolas,'Courier 
 #customDialogInput{margin:5px;padding:0 3px;border:1px solid #333;border-radius:5px;font-size:18px;line-height:1.5;width:280px}
 .customDialogButtons{display:flex;flex-flow:row-reverse nowrap;justify-content:space-between}
 #customDialogOkay{order:-1}
+@font-face{font-family:"Segoe Print";src:url("../media/segoeprb.ttf")}
