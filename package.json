@@ -22,7 +22,7 @@
     "url": "https://github.com/alienzhangyw/BlockPi.git"
   },
   "devDependencies": {
-    "electron": "^10.1.3",
+    "electron": "^10.2.0",
     "electron-builder": "^22.8.1",
     "electron-reload": "^1.5.0",
     "fs": "0.0.1-security",
