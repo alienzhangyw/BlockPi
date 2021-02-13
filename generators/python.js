@@ -68,7 +68,7 @@ Blockly.Python.addReservedWords(
     'issubclass,iter,len,license,list,locals,long,map,max,memoryview,min,' +
     'next,object,oct,open,ord,pow,print,property,quit,range,raw_input,reduce,' +
     'reload,repr,reversed,round,set,setattr,slice,sorted,staticmethod,str,' +
-    'sum,super,tuple,type,unichr,unicode,vars,xrange,zip' + 
+    'sum,super,tuple,type,unichr,unicode,vars,xrange,zip' +
     'time,gpiozero,tm1637,sense_hat,sense_emu,SenseHat,sense,event,camera,Picamera,Color,picamera'
 );
 
@@ -127,6 +127,12 @@ Blockly.Python.ORDER_OVERRIDES = [
 ];
 
 /**
+ * Whether the init method has been called.
+ * @type {?boolean}
+ */
+Blockly.Python.isInitialized = false;
+
+/**
  * Initialise the database of variable names.
  * @param {!Blockly.Workspace} workspace Workspace to generate code from.
  * @this {Blockly.Generator}
@@ -167,6 +173,7 @@ Blockly.Python.init = function(workspace) {
   }
 
   Blockly.Python.definitions_['variables'] = defvars.join('\n');
+  this.isInitialized = true;
 };
 
 /**
@@ -208,7 +215,7 @@ Blockly.Python.scrubNakedValue = function(line) {
  * Encode a string as a properly escaped Python string, complete with quotes.
  * @param {string} string Text to encode.
  * @return {string} Python string.
- * @private
+ * @protected
  */
 Blockly.Python.quote_ = function(string) {
   // Can't use goog.string.quote since % must also be escaped.
@@ -223,7 +230,7 @@ Blockly.Python.quote_ = function(string) {
     } else {
       string = string.replace(/'/g, '\\\'');
     }
-  };
+  }
   return quote + string + quote;
 };
 
@@ -232,12 +239,13 @@ Blockly.Python.quote_ = function(string) {
  * with quotes.
  * @param {string} string Text to encode.
  * @return {string} Python string.
- * @private
+ * @protected
  */
 Blockly.Python.multiline_quote_ = function(string) {
-  // Can't use goog.string.quote since % must also be escaped.
-  string = string.replace(/'''/g, '\\\'\\\'\\\'');
-  return '\'\'\'' + string + '\'\'\'';
+  var lines = string.split(/\n/g).map(Blockly.Python.quote_);
+  // Join with the following, plus a newline:
+  // + '\n' +
+  return lines.join(' + \'\\n\' + \n');
 };
 
 /**
@@ -248,7 +256,7 @@ Blockly.Python.multiline_quote_ = function(string) {
  * @param {string} code The Python code created for this block.
  * @param {boolean=} opt_thisOnly True to generate code for only this statement.
  * @return {string} Python code with comments and subsequent blocks added.
- * @private
+ * @protected
  */
 Blockly.Python.scrub_ = function(block, code, opt_thisOnly) {
   var commentCode = '';

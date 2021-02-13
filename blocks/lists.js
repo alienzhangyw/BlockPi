@@ -199,7 +199,7 @@ Blockly.Blocks['lists_create_with'] = {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     // Count number of inputs.
     var connections = [];
-    while (itemBlock) {
+    while (itemBlock && !itemBlock.isInsertionMarker()) {
       connections.push(itemBlock.valueConnection_);
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
@@ -249,7 +249,8 @@ Blockly.Blocks['lists_create_with'] = {
     // Add new inputs.
     for (var i = 0; i < this.itemCount_; i++) {
       if (!this.getInput('ADD' + i)) {
-        var input = this.appendValueInput('ADD' + i);
+        var input = this.appendValueInput('ADD' + i)
+            .setAlign(Blockly.ALIGN_RIGHT);
         if (i == 0) {
           input.appendField(Blockly.Msg['LISTS_CREATE_WITH_INPUT_WITH']);
         }
@@ -423,7 +424,7 @@ Blockly.Blocks['lists_getIndex'] = {
   /**
    * Create XML to represent whether the block is a statement or a value.
    * Also represent whether there is an 'AT' input.
-   * @return {Element} XML storage element.
+   * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
   mutationToDom: function() {
@@ -587,7 +588,7 @@ Blockly.Blocks['lists_setIndex'] = {
   },
   /**
    * Create XML to represent whether there is an 'AT' input.
-   * @return {Element} XML storage element.
+   * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
   mutationToDom: function() {
@@ -685,7 +686,7 @@ Blockly.Blocks['lists_getSublist'] = {
   },
   /**
    * Create XML to represent whether there are 'AT' inputs.
-   * @return {Element} XML storage element.
+   * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
   mutationToDom: function() {

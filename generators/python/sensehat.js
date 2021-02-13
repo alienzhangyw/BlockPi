@@ -192,8 +192,10 @@ Blockly.Python['sensehat_joystick_pushed'] = function (block) {
   var variables = Blockly.Variables.allUsedVarModels(workspace) || [];
   for (var i = 0, variable; variable = variables[i]; i++) {
     varName = variable.name;
-    globals.push(Blockly.Python.variableDB_.getName(varName,
-      Blockly.VARIABLE_CATEGORY_NAME));
+    if (block.getVars().indexOf(varName) == -1) {
+      globals.push(Blockly.Python.variableDB_.getName(varName,
+          Blockly.VARIABLE_CATEGORY_NAME));
+    }
   }
   // Add developer variables.
   var devVarList = Blockly.Variables.allDeveloperVariables(workspace);

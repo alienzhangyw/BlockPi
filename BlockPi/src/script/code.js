@@ -293,9 +293,9 @@ Code.init = function () {
       el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
     }
     // Make the 'Blocks' tab line up with the toolbox.
-    if (Code.workspace && Code.workspace.toolbox_.width) {
+    if (Code.workspace && Code.workspace.toolbox_.HtmlDiv.clientWidth) {
       document.getElementById('tab_blocks').style.minWidth =
-        (Code.workspace.toolbox_.width - 38) + 'px';
+        (Code.workspace.toolbox_.HtmlDiv.clientWidth - 38) + 'px';
       // Account for the 19 pixel margin and on each side.
     }
   };

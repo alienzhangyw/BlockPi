@@ -285,7 +285,7 @@ Blockly.Blocks['text_getSubstring'] = {
   },
   /**
    * Create or delete an input for a numeric index.
-   * This block has two such inputs, independant of each other.
+   * This block has two such inputs, independent of each other.
    * @param {number} n Specify first or second input (1 or 2).
    * @param {boolean} isAt True if the input should exist.
    * @private
@@ -722,7 +722,7 @@ Blockly.Constants.Text.TEXT_JOIN_MUTATOR_MIXIN = {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     // Count number of inputs.
     var connections = [];
-    while (itemBlock) {
+    while (itemBlock && !itemBlock.isInsertionMarker()) {
       connections.push(itemBlock.valueConnection_);
       itemBlock = itemBlock.nextConnection &&
           itemBlock.nextConnection.targetBlock();
@@ -773,7 +773,8 @@ Blockly.Constants.Text.TEXT_JOIN_MUTATOR_MIXIN = {
     // Add new inputs.
     for (var i = 0; i < this.itemCount_; i++) {
       if (!this.getInput('ADD' + i)) {
-        var input = this.appendValueInput('ADD' + i);
+        var input = this.appendValueInput('ADD' + i)
+            .setAlign(Blockly.ALIGN_RIGHT);
         if (i == 0) {
           input.appendField(Blockly.Msg['TEXT_JOIN_TITLE_CREATEWITH']);
         }

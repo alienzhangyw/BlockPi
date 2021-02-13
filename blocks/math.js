@@ -446,7 +446,7 @@ Blockly.Extensions.register('math_op_tooltip',
 Blockly.Constants.Math.IS_DIVISIBLEBY_MUTATOR_MIXIN = {
   /**
    * Create XML to represent whether the 'divisorInput' should be present.
-   * @return {Element} XML storage element.
+   * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
   mutationToDom: function() {
@@ -487,7 +487,7 @@ Blockly.Constants.Math.IS_DIVISIBLEBY_MUTATOR_MIXIN = {
 /**
  * 'math_is_divisibleby_mutator' extension to the 'math_property' block that
  * can update the block shape (add/remove divisor input) based on whether
- * property is "divisble by".
+ * property is "divisible by".
  * @this {Blockly.Block}
  * @package
  */
@@ -531,7 +531,7 @@ Blockly.Constants.Math.LIST_MODES_MUTATOR_MIXIN = {
   },
   /**
    * Create XML to represent the output type.
-   * @return {Element} XML storage element.
+   * @return {!Element} XML storage element.
    * @this {Blockly.Block}
    */
   mutationToDom: function() {

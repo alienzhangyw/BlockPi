@@ -208,7 +208,7 @@ Blockly.Blocks['dictionaries_create_with'] = {
     var itemBlock = containerBlock.getInputTargetBlock('STACK');
     // Count number of inputs.
     var connections = [];
-    while (itemBlock) {
+    while (itemBlock && !itemBlock.isInsertionMarker()) {
       connections.push(itemBlock.valueConnection_);
       itemBlock = itemBlock.nextConnection &&
         itemBlock.nextConnection.targetBlock();
@@ -260,7 +260,8 @@ Blockly.Blocks['dictionaries_create_with'] = {
     // Add new inputs.
     for (var i = 0; i < this.itemCount_; i++) {
       if (!this.getInput('VALUE' + i)) {
-        var input = this.appendValueInput('VALUE' + i);
+        var input = this.appendValueInput('VALUE' + i)
+            .setAlign(Blockly.ALIGN_RIGHT);
         if (i == 0) {
           input.appendField(Blockly.Msg['DICTIONARIES_CREATE_WITH_INPUT_WITH']);
         }
@@ -350,10 +351,10 @@ Blockly.Blocks['dictionaries_get_key'] = {
    * @this {Blockly.Block}
    */
   mutationToDom: function() {
-     var container = Blockly.utils.xml.createElement('mutation');
-     var isStatement = !this.outputConnection;
-     container.setAttribute('statement', isStatement);
-     return container;
+    var container = Blockly.utils.xml.createElement('mutation');
+    var isStatement = !this.outputConnection;
+    container.setAttribute('statement', isStatement);
+    return container;
   },
   /**
    * Parse XML to restore the 'AT' input.
