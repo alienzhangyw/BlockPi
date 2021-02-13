@@ -1,5 +1,9 @@
 # BlockPi
 
+**注意：由于作者本人已转行离开教育行业，平时工作时间也没有时间精力维护，除非放长假。因此此仓库处于半废弃状态，新功能更新会非常慢，并且不做保证。**
+
+**Notice: This repo is semi-deprecated due to the author's new job. Updates are slow and not promised.**
+
 一个专门为[树莓派](https://www.raspberry.org)设计的图形化编程平台，基于[Google Blockly](https://developers.google.com/blockly/)构建，适用于树莓派爱好者或者少儿编程学习。
 
 A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), built on [Google Blockly](https://developers.google.com/blockly/), made for RPi users or kids to learn coding.
@@ -20,9 +24,9 @@ A visual programming editor app for [Raspberry Pi](https://www.raspberry.org), b
 
 ## 前置需求/Requirements
 
-安装好官方最新[Raspbian](https://www.raspberrypi.org/downloads/raspbian/)桌面系统（Raspbian Buster with desktop and recommended software）的树莓派（4B、3、3B、3B+等有40pin GPIO的型号）。
+安装好官方最新[Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/)桌面系统（Raspberry Pi OS with desktop and recommended software）的树莓派（4B、3、3B、3B+等有40pin GPIO的型号）。
 
-A Raspberry Pi with 40pin GPIO(4B, 3, 3B, 3B+...), with [Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/) with desktop and recommended software installed.
+A Raspberry Pi with 40pin GPIO(4B, 3, 3B, 3B+...), with [Raspberry Pi OS](https://www.raspberrypi.org/software/operating-systems/) with desktop and recommended software installed.
 
 如果不是，请确保树莓派系统中安装了Nodejs 12以上的版本和Python 3。
 
@@ -39,7 +43,7 @@ If not, please make sure your Linux-based RPi system have Nodejs v12+ and Python
 - 或者使用用终端命令：Or you can use command in shell:
 
 ```shell
-sudo dpkg -i blockpi_1.1.3_armv7l.deb
+sudo dpkg -i blockpi_1.1.5_armv7l.deb
 ```
 
 注意自己的文件名。Pay attention to your file name.
@@ -51,6 +55,8 @@ sudo apt install -f
 ```
 
 安装模块后重新输入安装命令。
+
+**！中国用户可能需要使用国内的Linux镜像源，请自行更改。**
 
 If failed to install. it's usually caused by the lack of some packages, try input
 
@@ -82,8 +88,6 @@ sudo apt install python3-gpiozero sense-hat python3-sense-emu sense-emu-tools py
 ## 未来计划/Future plans
 
 - [ ] UART、IIC、SPI设备支持，比如~~数码管~~、LCD/OLED屏幕。UART, IIC, and SPI devices support, e.g. ~~LED segments~~, LCD/OLED screen...
-
-- [ ] 模数转换、马达、~~可变调蜂鸣器~~支持。ADC, motors and ~~tonal buzzer~~ support.
 
 - [ ] 更多Python功能和模块，比如~~字典~~、爬虫、图片处理、Turtle等。More Python functions and modules like ~~dictionary~~, http requests, pictures, and even Turtle.
 
@@ -148,18 +152,10 @@ yarn dist:linux
    
    A：不，完全免费。Yes, it's totally free!
 
-2. Q：deb和AppImage有什么区别？Is there any difference between deb and AppImage?
-   
-   A：基本上没什么区别，deb安装方式多了关闭自动保存代码的功能，而AppImage能够自动检查更新。Basically they are the same, deb installation can auto-save your code when you close the APP, while AppImage can check for updates automatically.
-
-3. Q：和树莓派上自带的Scratch3有什么区别？What's the difference between BlockPi and Scratch3 on Raspbian?
+2. Q：和树莓派上自带的Scratch3有什么区别？What's the difference between BlockPi and Scratch3 on Raspbian?
    
    A：BlockPi能够生成Python代码，未来会更新更多Scratch3上没有的功能，更多传感器设备支持和人工智能功能。BlockPi can generate Python code. In the future, I will update more features than Scratch3, more sensor device support and even AI functions.
 
-4. Q：有使用说明或者教程吗？Any tutorials?
+3. Q：有使用说明或者教程吗？Any tutorials?
    
    A：在项目[Wiki](https://github.com/alienzhangyw/BlockPi/wiki)页面有持续更新一些教程和案例，也可以关注我的知乎专栏[BlockPi树莓派图形化编程](https://zhuanlan.zhihu.com/BlockPi)。I keep updating some tutorials on the [Wiki](https://github.com/alienzhangyw/BlockPi/wiki) page.
-
-## 另外
-
-有工作职位推荐或者商务合作请私信或者发送邮件至<alienzhangyw@live.cn>。
