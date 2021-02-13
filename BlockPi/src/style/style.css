@@ -17,7 +17,7 @@ section h2{border:1px solid #ccc;border-bottom:none;font-size:20px;line-height:2
 .buttonBox{float:right}
 .buttonBox input[type=text]{display:inline-block;width:160px;height:24px;font-size:16px;border:1px solid #999;margin:1px 5px;vertical-align:top;background-color:#eee;padding:0 2px}
 .buttonBox input[type=file]{display:none}
-button{margin:1px 5px;padding:1px 10px;border-radius:4px;border:1px solid #ddd;font-size:large;background-color:#eee;color:#000;outline:0}
+button{margin:1px 5px;padding:1px 10px;border-radius:4px;border:1px solid #ddd;font-size:large;background-color:#eee;color:#000;outline:0;cursor:pointer;}
 button.primary>img{opacity:1}
 button>img{opacity:.6;vertical-align:text-bottom}
 button:hover>img{opacity:1}
