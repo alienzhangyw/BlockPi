@@ -1,6 +1,6 @@
 {
   "name": "blockpi",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "A visual programming editor for Raspberry Pi",
   "main": "BlockPi/main.js",
   "scripts": {
