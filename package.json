@@ -87,6 +87,7 @@
         "--before-install=build/requirements.sh"
       ],
       "depends": [
+        "python3",
         "gconf2",
         "gconf-service",
         "libnotify4",
