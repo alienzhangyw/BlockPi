@@ -28,7 +28,7 @@ function createWindow() {
         backgroundColor: '#2e2c29',
         webPreferences: {
             nodeIntegration: true,
-            nodeIntegrationInWorker: true
+            contextIsolation: false,
         },
         icon: nativeImage.createFromPath('BlockPi/src/media/logo_32x32.png')
     })

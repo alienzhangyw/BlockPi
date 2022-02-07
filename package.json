@@ -1,6 +1,6 @@
 {
   "name": "blockpi",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A visual programming editor for Raspberry Pi",
   "main": "BlockPi/main.js",
   "scripts": {
@@ -22,8 +22,8 @@
     "url": "https://github.com/alienzhangyw/BlockPi.git"
   },
   "devDependencies": {
-    "electron": "^11.2.3",
-    "electron-builder": "^22.9.1",
+    "electron": "^17.0.0",
+    "electron-builder": "^22.14.13",
     "electron-reload": "^1.5.0",
     "fs": "0.0.1-security",
     "google-closure-compiler": "^20210202.0.0",
@@ -36,13 +36,13 @@
     "yargs": "^16.2.0"
   },
   "dependencies": {
-    "electron-updater": "^4.3.5",
+    "electron-updater": "^4.6.5",
     "iconv-lite": "^0.6.2"
   },
   "build": {
     "appId": "com.github.alienzhangyw.blockpi",
     "productName": "BlockPi",
-    "copyright": "Copyright © 2019-2021 ${author}",
+    "copyright": "Copyright © 2019-2022 ${author}",
     "directories": {
       "buildResources": "build",
       "output": "dist"
@@ -73,7 +73,7 @@
         },
         {
           "target": "deb",
-          "arch": "armv7l"
+          "arch": ["armv7l", "arm64"]
         }
       ],
       "category": "Development"
@@ -83,7 +83,7 @@
     },
     "deb": {
       "fpm": [
-        "--architecture=armhf",
+        "--architecture=all",
         "--before-install=build/requirements.sh"
       ],
       "depends": [
@@ -91,7 +91,6 @@
         "gconf2",
         "gconf-service",
         "libnotify4",
-        "libappindicator1",
         "libxtst6",
         "libnss3",
         "python3-gpiozero",

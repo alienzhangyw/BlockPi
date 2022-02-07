@@ -1,7 +1,4 @@
-# 1.2.0
+# 1.2.1
 
-Update Blockly core to 4.20201217.0.\
-更新Blockly内核版本到4.20201217.0。
-
-New designed logo.\
-重新设计了logo。
+Update Electron and other dependencies.\
+更新Electron和其他依赖。
